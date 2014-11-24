@@ -151,6 +151,7 @@ namespace gitlog_parser
             {
                 System.Console.WriteLine(Parsing_Data[j].ToString());
             }
+            // Parsing 된 Arraylist 전송
             return Parsing_Data;
         }
     }
