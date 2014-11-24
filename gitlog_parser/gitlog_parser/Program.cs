@@ -16,19 +16,19 @@ namespace gitlog_parser
             a.commitParsing(logData);
         }
     }
-    class Parsing_Data
+    /*class Parsing_Data
     {
-        /*
-         * 2014-11-19 권상희
-         * Github log Data를 나눠서 저장할 변수 선언
-         */
+        
+         //2014-11-19 권상희
+         //Github log Data를 나눠서 저장할 변수 선언
+         
         ArrayList author;
         ArrayList email;
         ArrayList date;
         ArrayList subject;
         ArrayList Insertion_number;
         ArrayList Deletion_number;
-    }
+    }*/
 
     class Parsing_class
     {
@@ -45,7 +45,7 @@ namespace gitlog_parser
             string line;
             // Read the file and display it line by line.(파일 포인터)
             System.IO.StreamReader file =
-            new System.IO.StreamReader(@"C:\Users\내문서\Documents\Visual Studio 2010\Projects\gitlog_parser\gitlog_parser\log_stat.txt");
+            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_stat_WE.txt");
             // Text file로 부터 읽어서 프로그램 내장화
             while ((line = file.ReadLine()) != null)
             {
@@ -69,38 +69,75 @@ namespace gitlog_parser
             return logTotalData;
         }
         public void commitParsing(ArrayList logData)
-        {
-            // commitSum : Commit 단위로 Parsing_class Data에 필드값을 넣기 위한 변수
-            int commitSum = 0;
+        {   
+            /*
+             * 2014-11-24 권상희
+             * 0번 index : insertion,  1번 index : deletion, 3번 index : date 4번 index : e-mail 5번 index : author
+             * index Number :0,1,2,3,4 순서 modula 5로 접근할 것
+            */
             // totalCommitValue : Log의 최종 commit수 변수
             int totalCommitValue = 0;
-            // parseNumber : commit마다 log에 접근하여 나눠서 할당하기 위한 변수
-            int parseNumber =0;
-            ArrayList commitNumber= new ArrayList();
+            ArrayList Parsing_Data = new ArrayList();
+            string data = null;
+            
             for (int i = 0; i < logData.Count; i++)
             {
-                if (logData[i].ToString().Contains("Author") == true)
+                if (logData[i].ToString().Contains("changed") == true)
                 {
-                    commitNumber.Add(i);
+                    if(logData[i].ToString().Contains("insertion")==true)
+                    {
+                        data = logData[i].ToString();
+                        string[] cut_str = data.Split(new char[]{',',' '});
+                        for(int j=0 ; j<cut_str.Length;j++)
+                        {
+                            System.Console.WriteLine((j+1)+"번째"+cut_str[j]);
+                        }
+                        data = cut_str[5].Trim();
+                        System.Console.WriteLine("insertion 집어넣을 데이터" + data);
+                        Parsing_Data.Add(data);
+                        if (cut_str.Length > 7)
+                        {
+                            data = cut_str[8].Trim();
+                            System.Console.WriteLine("delection 집어넣을 데이터" + data);
+                            Parsing_Data.Add(data);
+                        }
+                    }
+                    else 
+                    {
+                        data = null;
+                        Parsing_Data.Add(data);
+                    }
+                    if(logData[i].ToString().Contains("deletion")==true)
+                    {
+                        data = logData[i].ToString();
+                        string[] cut_str = data.Split(new char[] { ',', ' ' });
+                        if(cut_str[6].Contains("delection")==true)
+                        {
+                            data = cut_str[5].Trim();
+                            System.Console.WriteLine("delection 집어넣을 데이터" + data);
+                            Parsing_Data.Add(data);
+                        }
+                    }
+                    else
+                    {
+                        data = null;
+                        Parsing_Data.Add(data);
+                    }               
+                }
+                else 
+                {
+                    data = null;
+                    Parsing_Data.Add(data);
+                    Parsing_Data.Add(data);
                 }
             }
             for (int i = logData.Count - 1; i <= 0; i--)
             {
                 if (logData[i].ToString().Contains("Author") == true)
                 {
-                    System.Console.WriteLine(logData[i].ToString());
+                    totalCommitValue = totalCommitValue + 1;
                 }
             }
-            totalCommitValue = commitNumber.Count;
-            System.Console.WriteLine(totalCommitValue);
-            for (int i = commitNumber.Count-1; i >= 0; i--)
-            {
-               parseNumber = int.Parse(commitNumber[i].ToString());
-               System.Console.WriteLine(logData[parseNumber].ToString());
-            }
-           
-            // 마지막 commit의 Author 확인
-            // System.Console.Write(logData[int.Parse(commitNumber[totalCommitValue-1].ToString())]);
         }
     }
 }
