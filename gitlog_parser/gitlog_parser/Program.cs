@@ -16,19 +16,6 @@ namespace gitlog_parser
             a.commitParsing(logData);
         }
     }
-    /*class Parsing_Data
-    {
-         //2014-11-19 권상희
-         //Github log Data를 나눠서 저장할 변수 선언
-         
-        ArrayList author;
-        ArrayList email;
-        ArrayList date;
-        ArrayList subject;
-        ArrayList Insertion_number;
-        ArrayList Deletion_number;
-    }*/
-
     class Parsing_class
     {
         public ArrayList fileRead()
