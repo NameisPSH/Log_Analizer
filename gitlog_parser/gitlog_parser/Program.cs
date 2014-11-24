@@ -88,6 +88,7 @@ namespace gitlog_parser
             for(int i = 0; i <tem_Parsing_Data.Count;i++)
             {
                 data = tem_Parsing_Data[i].ToString();
+                // 1번째,2번째 (삽입,삭제) 입력
                 if(data.Contains("changed") == true)
                 {
                     if (data.Contains("insertion") == true)
@@ -136,21 +137,24 @@ namespace gitlog_parser
                         cut_str[j] = cut_str[j].Trim();
                         //System.Console.WriteLine(j+"번째" + cut_str[j]);
                     }
+                    // 3번째 Date(날짜) 입력
                     Parsing_Data.Add(cut_str[1]);
                     string[] name_data = cut_str[2].Split(new char[] { '<', '>' }, StringSplitOptions.RemoveEmptyEntries);
                     for (int j = 0; j < name_data.Length; j++)
                     {
                         name_data[j] = name_data[j].Trim();
                     }
+                    // 4번째 Author(저자명) 입력
                     Parsing_Data.Add(name_data[0]);
+                    // 5번째 e-mail 입력
                     Parsing_Data.Add(name_data[1]);
                 }
             }
-            // total test
-            for(int j = 0;j < Parsing_Data.Count;j++)
+            // total test 화면에 출력하며 검증
+            /*for(int j = 0;j < Parsing_Data.Count;j++)
             {
                 System.Console.WriteLine(Parsing_Data[j].ToString());
-            }
+            }*/
             // Parsing 된 Arraylist 전송
             return Parsing_Data;
         }
