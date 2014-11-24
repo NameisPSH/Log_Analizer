@@ -18,7 +18,6 @@ namespace gitlog_parser
     }
     /*class Parsing_Data
     {
-        
          //2014-11-19 권상희
          //Github log Data를 나눠서 저장할 변수 선언
          
