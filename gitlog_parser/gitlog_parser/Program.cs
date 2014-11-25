@@ -16,9 +16,9 @@ namespace gitlog_parser
             ArrayList Date_parsing = new ArrayList();
             logData = a.fileRead();
             parsing_logData = a.commitParsing(logData);
-            //Analysis_Class b = new Analysis_Class();
-            //Date_parsing = b.Data_conversion(parsing_logData);
-            //b.project_date(Date_parsing);
+            Analysis_Class b = new Analysis_Class();
+            Date_parsing = b.Data_conversion(parsing_logData);
+            b.project_date(Date_parsing);
         }
     }
     class Parsing_class
@@ -166,6 +166,57 @@ namespace gitlog_parser
             }
             // Parsing 된 Arraylist 전송
             return Parsing_Data;
+        }
+    }
+    class Analysis_Class
+    {
+        string[] month = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+        string[] conversion_month = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
+        string total_month = null;
+        string total_Date = null;
+        public ArrayList Data_conversion(ArrayList Parsing_Data)
+        {
+            // 년, 월, 일로 덮어씌우고 return
+            string data = null;
+            for (int j = 0; j < Parsing_Data.Count; j++)
+            {
+                if (j % 5 == 2)
+                {
+                    data = Parsing_Data[j].ToString();
+                    string[] cut_str_month = data.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    
+                    //Date Parsing
+                    for (int i = 0; i < cut_str_month.Length; i++)
+                        cut_str_month[i] = cut_str_month[i].Trim();
+                    //System.Console.WriteLine(cut_str_month[1]);
+                    for (int k = 0; k < month.Length; k++)
+                    {
+                        if (cut_str_month[1].Equals(month[k]) == true)
+                        {
+                            total_month = conversion_month[k];
+                        }
+                    }
+                    //System.Console.WriteLine("바꾸기 전:" + cut_str_month[1] + "바꾼 후" + total_month);
+                    total_Date = cut_str_month[4] + '-' + total_month + '-' + cut_str_month[2];
+                    //System.Console.WriteLine("날짜:" + total_Date);
+                    Parsing_Data[j] = total_Date;
+                }
+            }
+
+            //for(int i=0;i<Parsing_Data.Count;i++)
+            //    System.Console.WriteLine(Parsing_Data[i].ToString());
+            return Parsing_Data;
+        }
+        public void project_date(ArrayList Date_parsing)
+        {
+            string temp_first_Date = Date_parsing[2].ToString();
+            
+            DateTime first_Date = DateTime.Parse(temp_first_Date);
+            System.Console.WriteLine("첫날" + first_Date);
+
+            string temp_last_Date = Date_parsing[Date_parsing.Count - 3].ToString();
+            DateTime last_Date = DateTime.Parse(temp_last_Date);
+            System.Console.WriteLine("마지막날" + last_Date);
         }
     }
 }
