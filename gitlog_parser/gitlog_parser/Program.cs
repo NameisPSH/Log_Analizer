@@ -13,8 +13,12 @@ namespace gitlog_parser
             Parsing_class a = new Parsing_class();
             ArrayList logData = new ArrayList();
             ArrayList parsing_logData = new ArrayList();
+            ArrayList Date_parsing = new ArrayList();
             logData = a.fileRead();
             parsing_logData = a.commitParsing(logData);
+            //Analysis_Class b = new Analysis_Class();
+            //Date_parsing = b.Data_conversion(parsing_logData);
+            //b.project_date(Date_parsing);
         }
     }
     class Parsing_class
@@ -32,7 +36,7 @@ namespace gitlog_parser
             string line;
             // Read the file and display it line by line.(파일 포인터)
             System.IO.StreamReader file =
-            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_stat.txt");
+            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_stat_WE.txt");
             // Text file로 부터 읽어서 프로그램 내장화
             while ((line = file.ReadLine()) != null)
             {
@@ -89,16 +93,16 @@ namespace gitlog_parser
             {
                 data = tem_Parsing_Data[i].ToString();
                 // 1번째,2번째 (삽입,삭제) 입력
-                if(data.Contains("changed") == true)
+                if(data.Contains("changed,") == true)
                 {
-                    if (data.Contains("insertion") == true)
+                    if (data.Contains("(+") == true)
                     {
                         string[] cut_str = data.Split(new string[]{",","insert","dele"},StringSplitOptions.RemoveEmptyEntries);
                         cut_str[1] = cut_str[1].Trim();
                         Parsing_Data.Add(cut_str[1]);
                         if(cut_str.Length > 4)
                         {
-                            if (cut_str[4].Contains("(-)") == true)
+                            if (cut_str[4].Contains("(-") == true)
                             {
                                 cut_str[3] = cut_str[3].Trim();
                                 Parsing_Data.Add(cut_str[3]);
@@ -112,7 +116,7 @@ namespace gitlog_parser
                     else
                     {
                         Parsing_Data.Add("0");
-                        if (data.Contains("deletion") == true)
+                        if (data.Contains("(-)") == true)
                         {
                             string[] cut_str = data.Split(new string[] { ",", "deletion" }, StringSplitOptions.RemoveEmptyEntries);
                             cut_str[1] = cut_str[1].Trim();
@@ -138,7 +142,8 @@ namespace gitlog_parser
                         //System.Console.WriteLine(j+"번째" + cut_str[j]);
                     }
                     // 3번째 Date(날짜) 입력
-                    Parsing_Data.Add(cut_str[1]);
+                    if (cut_str[1].Contains(":")==true)
+                         Parsing_Data.Add(cut_str[1]);
                     string[] name_data = cut_str[2].Split(new char[] { '<', '>' }, StringSplitOptions.RemoveEmptyEntries);
                     for (int j = 0; j < name_data.Length; j++)
                     {
@@ -151,10 +156,14 @@ namespace gitlog_parser
                 }
             }
             // total test 화면에 출력하며 검증
-            /*for(int j = 0;j < Parsing_Data.Count;j++)
+            //System.Console.WriteLine(Parsing_Data.Count);
+            for(int j = 0;j < Parsing_Data.Count;j++)
             {
-                System.Console.WriteLine(Parsing_Data[j].ToString());
-            }*/
+                if(j % 5 == 2)
+                {
+                    //System.Console.WriteLine(Parsing_Data[j].ToString());
+                }
+            }
             // Parsing 된 Arraylist 전송
             return Parsing_Data;
         }
