@@ -207,6 +207,7 @@ namespace gitlog_parser
             //    System.Console.WriteLine(Parsing_Data[i].ToString());
             return Parsing_Data;
         }
+
         public void project_date(ArrayList Date_parsing)
         {
             string temp_first_Date = Date_parsing[2].ToString();
@@ -217,6 +218,11 @@ namespace gitlog_parser
             string temp_last_Date = Date_parsing[Date_parsing.Count - 3].ToString();
             DateTime last_Date = DateTime.Parse(temp_last_Date);
             System.Console.WriteLine("마지막날" + last_Date);
+
+            TimeSpan Calc_Date = last_Date.Subtract(first_Date);
+            int Result_Date = Calc_Date.Days;
+
+            System.Console.WriteLine("총 개발일수는 " + Result_Date);
         }
     }
 }

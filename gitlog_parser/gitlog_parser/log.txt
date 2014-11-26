@@ -1,6 +1,6 @@
 commit ca82a6dff817ec66f44342007202690a93763949
 Author: Scott Chacon <schacon@gmail.com>
-Date:   Mon Mar 17 21:52:11 2008 -0700
+Date:   Mon Dec 17 21:52:11 2008 -0700
 
     changed the verison number
 
