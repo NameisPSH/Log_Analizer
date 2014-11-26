@@ -223,6 +223,7 @@ namespace gitlog_parser
 
             // System.Console.WriteLine("총 개발일수는 " + Result_Date);
             // System.Console.WriteLine("값은 : "+Date_parsing[3]);
+            System.Console.WriteLine(Result_Date);
             return Result_Date;
         }
         // 사람당 개발기간을 계산하기 위한 함수
