@@ -19,11 +19,13 @@ namespace gitlog_parser
             Analysis_Class b = new Analysis_Class();
             Date_parsing = b.Data_conversion(parsing_logData);
             b.project_date(Date_parsing);
+            b.project_analysis(Date_parsing);
         }
     }
     class Parsing_class
     {
-        private ArrayList fileRead()
+        static int totalCommitValue = 0;
+        public ArrayList fileRead()
         {
             /*
              * 2014-11-19 권상희
@@ -59,7 +61,7 @@ namespace gitlog_parser
             //System.Console.ReadLine();
             return logTotalData;
         }
-        private ArrayList commitParsing(ArrayList logData)
+        public ArrayList commitParsing(ArrayList logData)
         {
             /*
              * 2014-11-24 권상희
@@ -67,7 +69,6 @@ namespace gitlog_parser
              * index Number :0,1,2,3,4 순서 modula 5로 접근할 것
             */
             // totalCommitValue : Log의 최종 commit수 변수
-            static int totalCommitValue = 0;
             ArrayList tem_Parsing_Data = new ArrayList();
             ArrayList Parsing_Data = new ArrayList();
             string data = null;
@@ -184,7 +185,7 @@ namespace gitlog_parser
                 {
                     data = Parsing_Data[j].ToString();
                     string[] cut_str_month = data.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    
+
                     //Date Parsing
                     for (int i = 0; i < cut_str_month.Length; i++)
                         cut_str_month[i] = cut_str_month[i].Trim();
@@ -202,27 +203,87 @@ namespace gitlog_parser
                     Parsing_Data[j] = total_Date;
                 }
             }
-
-            //for(int i=0;i<Parsing_Data.Count;i++)
-            //    System.Console.WriteLine(Parsing_Data[i].ToString());
+            for(int i=0;i<Parsing_Data.Count;i++)
+                System.Console.WriteLine(Parsing_Data[i].ToString());
             return Parsing_Data;
         }
-
-        public void project_date(ArrayList Date_parsing)
+        //, Boolean flag 전체 프로젝트 기간과, 사람당 프로젝트 기간 정리
+        public int project_date(ArrayList Date_parsing)
         {
             string temp_first_Date = Date_parsing[2].ToString();
-            
             DateTime first_Date = DateTime.Parse(temp_first_Date);
-            System.Console.WriteLine("첫날" + first_Date);
+            //System.Console.WriteLine("첫날" + first_Date);
 
             string temp_last_Date = Date_parsing[Date_parsing.Count - 3].ToString();
             DateTime last_Date = DateTime.Parse(temp_last_Date);
-            System.Console.WriteLine("마지막날" + last_Date);
+            //System.Console.WriteLine("마지막날" + last_Date);
 
             TimeSpan Calc_Date = last_Date.Subtract(first_Date);
             int Result_Date = Calc_Date.Days;
 
-            System.Console.WriteLine("총 개발일수는 " + Result_Date);
+            // System.Console.WriteLine("총 개발일수는 " + Result_Date);
+            // System.Console.WriteLine("값은 : "+Date_parsing[3]);
+            return Result_Date;
+        }
+        // 사람당 개발기간을 계산하기 위한 함수
+        //public int per_pj_date(ArrayList logData, string name)
+        //{
+
+        //}
+        public void project_analysis(ArrayList parsing_logData)
+        {
+            List<string> project_name = new List<string>();
+            string temp_name = null;
+            // 프로젝트 참여한 사람 이름만 단독으로 뽑아내기
+            for (int i = 0; i < parsing_logData.Count; i++)
+            {
+                if (i % 5 == 3)
+                {
+                    temp_name = parsing_logData[i].ToString();
+                    System.Console.WriteLine(temp_name);
+                    if (project_name.Contains(temp_name) == false)
+                        project_name.Add(temp_name);
+                }
+            }
+            System.Console.WriteLine("사람이름 중복제거 이후");
+            // 검증
+            //for (int i = 0; i < project_name.Count; i++)
+            //    System.Console.WriteLine(project_name[i]);
+            // GUI에 표현하기 위한 임시 tuple 생성, 반환할 arraylist에 순차적으로 들어가기 위하여 생성한 변수
+            // 0번 index : 사람이름
+            string temp_pername = null;
+            // 1번 index : 최종 커밋수
+            int temp_total_commit = 0;
+            // 2번 index : 총 개발기간
+            string temp_total_date = null;
+            // 3번 index : 개발 시작 날
+            string temp_start_date = null;
+            // 4번 index : 개발 종료 날
+            string temp_end_date = null;
+            // 5번 index : 총 코드개발수 
+            int temp_total_loc = 0;
+            // 6번 index : 총 생성한 코드라인수
+            int temp_ins_loc = 0;
+            // 7번 index : 삭제한 총 코드라인수
+            int temp_del_loc = 0;
+            // tem_pjname : 매개변수로 받은 arraylist에서 사람이름만 임시적으로 추출하는 변수
+            string tem_pjname = null;
+            for(int j=0; j<project_name.Count;j++)
+            {
+                for(int i=0; i<parsing_logData.Count;i++)
+                {
+                    if(i%5 == 3)
+                    {
+                        tem_pjname = parsing_logData[i].ToString();
+                        if(tem_pjname.Equals(project_name[j].ToString())==true)
+                        {
+                            temp_total_commit = temp_total_commit + 1;
+                        }
+                    }
+                }
+                System.Console.WriteLine(project_name[j] + "의 커밋수" + temp_total_commit);
+                temp_total_commit = 0;
+            }
         }
     }
 }
