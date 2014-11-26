@@ -38,7 +38,7 @@ namespace gitlog_parser
             string line;
             // Read the file and display it line by line.(파일 포인터)
             System.IO.StreamReader file =
-            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_stat_WE.txt");
+            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_test.txt");
             // Text file로 부터 읽어서 프로그램 내장화
             while ((line = file.ReadLine()) != null)
             {
@@ -298,11 +298,11 @@ namespace gitlog_parser
                     }
                 }
                 // 분석 단위 테스트
-                // System.Console.WriteLine(project_name[j] + "의 커밋수" + temp_total_commit);
+                 System.Console.WriteLine(project_name[j] + "의 커밋수" + temp_total_commit);
                 // System.Console.WriteLine(project_name[j] + "의 총 추가수" + temp_ins_loc);
                 // System.Console.WriteLine(project_name[j] + "의 총 삭제수" + temp_del_loc);
                 // 총 코드 수 작성
-                temp_total_loc = temp_ins_loc + temp_del_loc;
+                temp_total_loc = temp_ins_loc - temp_del_loc;
                 System.Console.WriteLine(project_name[j] + "의 총 코드작성수" + temp_total_loc);
                 // 사람마다 값을 계산해주기 위해 초기화
                 temp_total_commit = 0;
