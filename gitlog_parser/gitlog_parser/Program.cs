@@ -23,7 +23,7 @@ namespace gitlog_parser
     }
     class Parsing_class
     {
-        public ArrayList fileRead()
+        private ArrayList fileRead()
         {
             /*
              * 2014-11-19 권상희
@@ -59,7 +59,7 @@ namespace gitlog_parser
             //System.Console.ReadLine();
             return logTotalData;
         }
-        public ArrayList commitParsing(ArrayList logData)
+        private ArrayList commitParsing(ArrayList logData)
         {
             /*
              * 2014-11-24 권상희
@@ -67,7 +67,7 @@ namespace gitlog_parser
              * index Number :0,1,2,3,4 순서 modula 5로 접근할 것
             */
             // totalCommitValue : Log의 최종 commit수 변수
-            int totalCommitValue = 0;
+            static int totalCommitValue = 0;
             ArrayList tem_Parsing_Data = new ArrayList();
             ArrayList Parsing_Data = new ArrayList();
             string data = null;
