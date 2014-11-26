@@ -1,0 +1,9 @@
+c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\bin\Debug\windowsForms_mjs.exe
+c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\bin\Debug\windowsForms_mjs.pdb
+c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Form1.resources
+c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Properties.Resources.resources
+c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.exe
+c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.pdb
