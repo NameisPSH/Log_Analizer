@@ -268,6 +268,10 @@ namespace gitlog_parser
             int temp_del_loc = 0;
             // tem_pjname : 매개변수로 받은 arraylist에서 사람이름만 임시적으로 추출하는 변수
             string tem_pjname = null;
+            // tem_per_ins : 사람당 insertion을 추출하기 위한 변수
+            int tem_per_ins = 0;
+            // tem_per_del : 사람당 delection을 추출하기 위한 변수
+            int tem_per_del = 0;
             for (int j = 0; j < project_name.Count; j++)
             {
                 for (int i = 0; i < parsing_logData.Count; i++)
@@ -277,13 +281,21 @@ namespace gitlog_parser
                         tem_pjname = parsing_logData[i].ToString();
                         if (tem_pjname.Equals(project_name[j].ToString()) == true)
                         {
+                            // Total commit수
                             temp_total_commit = temp_total_commit + 1;
+                            // insertion 수
+                            tem_per_ins = int.Parse(parsing_logData[i-3].ToString());
+                            temp_ins_loc = temp_ins_loc + tem_per_ins;
+                            System.Console.WriteLine(project_name[j] + "의 추가수" + tem_per_ins);
                         }
-
                     }
                 }
                 //System.Console.WriteLine(project_name[j] + "의 커밋수" + temp_total_commit);
+                System.Console.WriteLine(project_name[j] + "의 총 추가수" + temp_ins_loc);
+                // 사람마다 값을 계산해주기 위해 초기화
                 temp_total_commit = 0;
+                tem_per_ins = 0;
+                temp_ins_loc = 0;
             }
         }
     }
