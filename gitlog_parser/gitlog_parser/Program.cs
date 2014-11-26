@@ -38,7 +38,7 @@ namespace gitlog_parser
             string line;
             // Read the file and display it line by line.(파일 포인터)
             System.IO.StreamReader file =
-            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_stat_WE.txt");
+            new System.IO.StreamReader(@"C:\Users\Owner\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_stat_WE.txt");
             // Text file로 부터 읽어서 프로그램 내장화
             while ((line = file.ReadLine()) != null)
             {
@@ -198,7 +198,7 @@ namespace gitlog_parser
                         }
                     }
                     //System.Console.WriteLine("바꾸기 전:" + cut_str_month[1] + "바꾼 후" + total_month);
-                    total_Date = cut_str_month[4] + '-' + total_month + '-' + cut_str_month[2];
+                    total_Date = cut_str_month[4] + '-' + total_month + '-' + cut_str_month[2] + ' ' + cut_str_month[3];
                     //System.Console.WriteLine("날짜:" + total_Date);
                     Parsing_Data[j] = total_Date;
                 }
@@ -208,23 +208,22 @@ namespace gitlog_parser
             return Parsing_Data;
         }
         //, Boolean flag 전체 프로젝트 기간과, 사람당 프로젝트 기간 정리
-        public int project_date(ArrayList Date_parsing)
+        public TimeSpan project_date(ArrayList Date_parsing)
         {
             string temp_first_Date = Date_parsing[2].ToString();
             DateTime first_Date = DateTime.Parse(temp_first_Date);
-            //System.Console.WriteLine("첫날" + first_Date);
+            System.Console.WriteLine("첫날" + first_Date);
 
             string temp_last_Date = Date_parsing[Date_parsing.Count - 3].ToString();
             DateTime last_Date = DateTime.Parse(temp_last_Date);
-            //System.Console.WriteLine("마지막날" + last_Date);
+            System.Console.WriteLine("마지막날" + last_Date);
 
             TimeSpan Calc_Date = last_Date.Subtract(first_Date);
             int Result_Date = Calc_Date.Days;
 
-            // System.Console.WriteLine("총 개발일수는 " + Result_Date);
+            System.Console.WriteLine("총 개발일수는 " + Calc_Date);
             // System.Console.WriteLine("값은 : "+Date_parsing[3]);
-            System.Console.WriteLine(Result_Date);
-            return Result_Date;
+            return Calc_Date;
         }
         // 사람당 개발기간을 계산하기 위한 함수
         //public int per_pj_date(ArrayList logData, string name)
