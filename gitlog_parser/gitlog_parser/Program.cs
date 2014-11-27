@@ -38,7 +38,7 @@ namespace gitlog_parser
             string line;
             // Read the file and display it line by line.(파일 포인터)
             System.IO.StreamReader file =
-            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_test.txt");
+            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log.txt");
             // Text file로 부터 읽어서 프로그램 내장화
             while ((line = file.ReadLine()) != null)
             {
