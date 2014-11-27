@@ -1,28 +1,287 @@
-commit ca82a6dff817ec66f44342007202690a93763949
-Author: Scott Chacon <schacon@gmail.com>
-Date:   Mon Mar 17 21:52:11 2008 -0700
+commit 8fdc0546ac8894e44403759c2a247bbf58cc1416
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Thu Nov 27 01:22:27 2014 +0900
 
-    changed the verison number
+    parsing & analysis
 
- Rakefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ gitlog_parser/gitlog_parser/Program.cs | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
-Author: Scott Chacon <schacon@gmail.com>
-Date:   Sat Mar 15 16:40:33 2008 -0700
+commit 1f6e6775a912a18565a39a9a4dac4506a40655e8
+Merge: 04187b0 731062a
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Thu Nov 27 01:21:59 2014 +0900
 
-    removed unnecessary test code
+    Merge branch 'master' of https://github.com/NameisPSH/Log_Analizer.git
 
- lib/simplegit.rb | 5 -----
- 1 file changed, 5 deletions(-)
+commit 731062aabbb85af8f5f219ecfeeeaa4d9c107728
+Author: Moon Jinseul <wlwl793@naver.com>
+Date:   Thu Nov 27 01:06:20 2014 +0900
 
-commit a11bef06a3f659402fe7563abf99ad00de2209e6
-Author: Scott Chacon <schacon@gmail.com>
-Date:   Sat Mar 15 10:31:28 2008 -0700
+    second UI change
+
+ windowsForms_mjs.sln                               |  20 +
+ windowsForms_mjs.suo                               | Bin 0 -> 24576 bytes
+ windowsForms_mjs/Form1.Designer.cs                 | 674 +++++++++++++++++++++
+ windowsForms_mjs/Form1.cs                          | 605 ++++++++++++++++++
+ windowsForms_mjs/Form1.resx                        | 171 ++++++
+ windowsForms_mjs/Program.cs                        | 300 +++++++++
+ windowsForms_mjs/Properties/AssemblyInfo.cs        |  36 ++
+ windowsForms_mjs/Properties/Resources.Designer.cs  |  71 +++
+ windowsForms_mjs/Properties/Resources.resx         | 117 ++++
+ windowsForms_mjs/Properties/Settings.Designer.cs   |  30 +
+ windowsForms_mjs/Properties/Settings.settings      |   7 +
+ windowsForms_mjs/bin/Debug/test.bmp                | Bin 0 -> 41785 bytes
+ windowsForms_mjs/bin/Debug/windowsForms_mjs.exe    | Bin 0 -> 25088 bytes
+ windowsForms_mjs/bin/Debug/windowsForms_mjs.pdb    | Bin 0 -> 48640 bytes
+ .../bin/Debug/windowsForms_mjs.vshost.exe          | Bin 0 -> 11600 bytes
+ .../bin/Debug/windowsForms_mjs.vshost.exe.manifest |  11 +
+ .../DesignTimeResolveAssemblyReferences.cache      | Bin 0 -> 4440 bytes
+ .../DesignTimeResolveAssemblyReferencesInput.cache | Bin 0 -> 6377 bytes
+ .../obj/x86/Debug/GenerateResource.read.1.tlog     | Bin 0 -> 668 bytes
+ .../obj/x86/Debug/GenerateResource.write.1.tlog    | Bin 0 -> 2580 bytes
+ .../obj/x86/Debug/ResolveAssemblyReference.cache   | Bin 0 -> 7897 bytes
+ .../obj/x86/Debug/windowsForms_mjs.Form1.resources | Bin 0 -> 180 bytes
+ ...windowsForms_mjs.Properties.Resources.resources | Bin 0 -> 180 bytes
+ .../windowsForms_mjs.csproj.FileListAbsolute.txt   |   9 +
+ .../obj/x86/Debug/windowsForms_mjs.exe             | Bin 0 -> 25088 bytes
+ .../obj/x86/Debug/windowsForms_mjs.pdb             | Bin 0 -> 48640 bytes
+ windowsForms_mjs/windowsForms_mjs.csproj           |  87 +++
+ 27 files changed, 2138 insertions(+)
+
+commit 04187b0954a6ab92dbf8379625569c55bf2a0399
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Thu Nov 27 00:17:36 2014 +0900
+
+    codeline_analysis_completion
+
+ gitlog_parser/gitlog_parser/Program.cs | 40 +++++++++++++++++++++++-----------
+ 1 file changed, 27 insertions(+), 13 deletions(-)
+
+commit a72e25a8654c637197fe1bd57071d59660295359
+Merge: 0743a44 22e408a
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Wed Nov 26 23:46:24 2014 +0900
+
+    sanghee_merge_analysis
+
+commit 0743a44227efee61c5b738ec55bd774068e23ae8
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Wed Nov 26 23:43:00 2014 +0900
+
+ gitlog_parser/gitlog_parser/Program.cs | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 22e408a9a73d4778aaf81af20de53586a1694bf7
+Author: Donghyeong Ryu <rdhben@naver.com>
+Date:   Wed Nov 26 19:10:34 2014 +0900
+
+ gitlog_parser/gitlog_parser/Program.cs | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+commit 1cb18cab738889b2c40ba5c6e8c2deb1467d625d
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Wed Nov 26 18:48:50 2014 +0900
+
+ gitlog_parser/gitlog_parser/Program.cs | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+commit 90da6be6ee36308f187fb2a169e315604ae6b9d0
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Wed Nov 26 16:19:22 2014 +0900
+
+ gitlog_parser/gitlog_parser/Program.cs | 69 +++++++++++-----------------------
+ 1 file changed, 21 insertions(+), 48 deletions(-)
+
+commit 1b37761f1e23dfa1f33b3dfa31049c225a92764e
+Merge: f8a5b77 91f0fae
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Wed Nov 26 16:09:51 2014 +0900
+
+commit f8a5b77a4e21a48004da9465fe44028807157ef8
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Wed Nov 26 16:06:16 2014 +0900
+
+ gitlog_parser/gitlog_parser/Program.cs | 87 +++++++++++++++++++++++++++++-----
+ 1 file changed, 74 insertions(+), 13 deletions(-)
+
+commit 91f0fae5cfbf54b744e52e039a736312b2373ce2
+Merge: dcfc415 12175e6
+Author: Donghyeong Ryu <rdhben@naver.com>
+Date:   Wed Nov 26 16:05:08 2014 +0900
+
+    Merge branch 'master' of https://github.com/NameisPSH/Log_Analizer.git
+
+commit dcfc4153f9ce7d1f9a043c27a428eb9155080bab
+Author: Donghyeong Ryu <rdhben@naver.com>
+Date:   Wed Nov 26 16:04:41 2014 +0900
+
+ gitlog_parser/gitlog_parser/Program.cs | 57 ++++++++++++++++++++++++++++++----
+ gitlog_parser/gitlog_parser/log.txt    |  2 +-
+ 2 files changed, 52 insertions(+), 7 deletions(-)
+
+commit 12175e68989f04edacdac555d2cebeca368e478a
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Wed Nov 26 13:10:43 2014 +0900
+
+ gitlog_parser/gitlog_parser/Program.cs | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit b525914ba03640449fee04beb7549bf3f9d33736
+Author: Donghyeong Ryu <rdhben@naver.com>
+Date:   Wed Nov 26 11:22:35 2014 +0900
+
+    date calc1
+
+ gitlog_parser/gitlog_parser/Program.cs | 6 ++++++
+ gitlog_parser/gitlog_parser/log.txt    | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+commit 8d4a7bf0f56e1e97fac6d46ab65b0e6582ab1421
+Author: Donghyeong Ryu <rdhben@naver.com>
+Date:   Tue Nov 25 18:49:48 2014 +0900
+
+    Analysis start
+
+ gitlog_parser/gitlog_parser/Program.cs | 57 ++++++++++++++++++++++++++++++++--
+ 1 file changed, 54 insertions(+), 3 deletions(-)
+
+commit 1d3ae7f6fff85008cecef009461718d83714138b
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Tue Nov 25 16:17:29 2014 +0900
+
+ gitlog_parser/gitlog_parser/Program.cs   |    27 +-
+ gitlog_parser/gitlog_parser/log_stat.txt | 85506 -----------------------------
+ 2 files changed, 18 insertions(+), 85515 deletions(-)
+
+commit 02bb98bdaa940ce4d6b617102329a61e77dc18a1
+Author: Heejeong Woo <woohjm@nate.com>
+Date:   Tue Nov 25 15:46:46 2014 +0900
+
+    first commit / mjs
+
+ gitlog_parser/windowsForms_mjs.sln                 |  20 +
+ gitlog_parser/windowsForms_mjs/Form1.Designer.cs   | 511 +++++++++++++++++++++
+ gitlog_parser/windowsForms_mjs/Form1.cs            | 400 ++++++++++++++++
+ gitlog_parser/windowsForms_mjs/Form1.resx          | 138 ++++++
+ gitlog_parser/windowsForms_mjs/Program.cs          |  21 +
+ .../windowsForms_mjs/Properties/AssemblyInfo.cs    |  36 ++
+ .../Properties/Resources.Designer.cs               |  71 +++
+ .../windowsForms_mjs/Properties/Resources.resx     | 117 +++++
+ .../Properties/Settings.Designer.cs                |  30 ++
+ .../windowsForms_mjs/Properties/Settings.settings  |   7 +
+ .../windowsForms_mjs/windowsForms_mjs.csproj       |  87 ++++
+ 11 files changed, 1438 insertions(+)
+
+commit ea87f05ef67d276122caa37836804d8b0e0124c4
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Tue Nov 25 02:08:03 2014 +0900
+
+    ㅎ
+
+ gitlog_parser/gitlog_parser/Program.cs | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+commit d2e534e557403dfeae836e41b58556d54cb1037c
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Tue Nov 25 02:05:28 2014 +0900
+
+    parsing_complete
+
+ gitlog_parser/gitlog_parser/Program.cs | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit abf2476b86cc5567cb86334c74684b9005c4b03c
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Tue Nov 25 02:03:31 2014 +0900
+
+    only delection
+
+ gitlog_parser/gitlog_parser/Program.cs | 118 ++++++++++++++++++++-------------
+ 1 file changed, 73 insertions(+), 45 deletions(-)
+
+commit 7d71ec938008ca635555be2364eb8c06d207ad7e
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Tue Nov 25 00:11:12 2014 +0900
+
+    only delection
+
+ gitlog_parser/gitlog_parser/Program.cs | 13 -------------
+ 1 file changed, 13 deletions(-)
+
+commit fd3eef4d7a54e4903319296f0a6f191a5955f372
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Tue Nov 25 00:10:17 2014 +0900
+
+    second
+
+ gitlog_parser/gitlog_parser/Program.cs | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit dcbcd677533225961171d25ecb3ca3f279e89b7e
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Tue Nov 25 00:07:50 2014 +0900
+
+    second
+
+ gitlog_parser/gitlog_parser/Program.cs | 89 ++++++++++++++++++++++++----------
+ 1 file changed, 63 insertions(+), 26 deletions(-)
+
+commit f10ac60a102289f35d7fc17edd60b3bd003a33fb
+Author: Sanghee4346 <sanghee4346@naver.com>
+Date:   Fri Nov 21 14:12:14 2014 +0900
 
     first commit
 
- README           |  6 ++++++
- Rakefile         | 23 +++++++++++++++++++++++
- lib/simplegit.rb | 25 +++++++++++++++++++++++++
- 3 files changed, 54 insertions(+)
+ gitlog_parser/gitlog_parser.sln                    |    20 +
+ gitlog_parser/gitlog_parser/Program.cs             |   106 +
+ .../gitlog_parser/Properties/AssemblyInfo.cs       |    36 +
+ gitlog_parser/gitlog_parser/gitlog_parser.csproj   |    94 +
+ gitlog_parser/gitlog_parser/log.txt                |    28 +
+ gitlog_parser/gitlog_parser/log_stat.txt           | 85506 +++++++++++++++++++
+ 6 files changed, 85790 insertions(+)
+
+commit d180461eec3f4b4c0f11e72cf90dfe7861e976be
+Author: Seunghyun Park <psh9697@nate.com>
+Date:   Wed Nov 19 17:37:20 2014 +0900
+
+    delete
+
+ ConsoleApplication1/ConsoleApplication1.sln | 22 ----------------------
+ 1 file changed, 22 deletions(-)
+
+commit 853b90f747db8b15a6b3f2ae41db9739bad7cd33
+Author: Seunghyun Park <psh9697@nate.com>
+Date:   Wed Nov 19 17:33:04 2014 +0900
+
+    test2
+
+ ConsoleApplication1/ConsoleApplication1/App.config |  6 ---
+ .../ConsoleApplication1/ConsoleApplication1.csproj | 58 ----------------------
+ ConsoleApplication1/ConsoleApplication1/Program.cs | 16 ------
+ .../ConsoleApplication1/Properties/AssemblyInfo.cs | 36 --------------
+ 4 files changed, 116 deletions(-)
+
+commit d3351d4021945cb3340fc84eb247adb6091c890d
+Author: Seunghyun Park <psh9697@nate.com>
+Date:   Wed Nov 19 17:20:35 2014 +0900
+
+    test
+
+ ConsoleApplication1/ConsoleApplication1/Program.cs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d8aa5c05e0d2ed97a6b712b33cc4aedaf1c0f68b
+Author: Seunghyun Park <psh9697@nate.com>
+Date:   Wed Nov 19 17:12:10 2014 +0900
+
+    Testing
+
+ .gitattributes                                     |  63 +++++++++
+ .gitignore                                         | 156 +++++++++++++++++++++
+ ConsoleApplication1/ConsoleApplication1.sln        |  22 +++
+ ConsoleApplication1/ConsoleApplication1/App.config |   6 +
+ .../ConsoleApplication1/ConsoleApplication1.csproj |  58 ++++++++
+ ConsoleApplication1/ConsoleApplication1/Program.cs |  16 +++
+ .../ConsoleApplication1/Properties/AssemblyInfo.cs |  36 +++++
+ 7 files changed, 357 insertions(+)
