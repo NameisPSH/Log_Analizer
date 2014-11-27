@@ -19,7 +19,15 @@ namespace gitlog_parser
             Analysis_Class b = new Analysis_Class();
             Date_parsing = b.Data_conversion(parsing_logData);
             string returnvalue = b.project_date(Date_parsing);
-            System.Console.WriteLine(returnvalue);
+            string[] cut_data = returnvalue.Split(new char[] { '|' });
+            for (int k = 0; k < cut_data.Length; k++)
+                cut_data[k] = cut_data[k].Trim();
+            // 진슬이가 label에 + 로 추가해야 되는 최종 개발 일정 3가지 시작날, 종료날, 진행기간
+            string temp_start_date = cut_data[0];
+            string temp_end_date = cut_data[1];
+            string temp_total_date = cut_data[2];
+            // 총개발일정 검증
+            //System.Console.WriteLine(returnvalue);
             b.project_analysis(Date_parsing);
         }
     }
@@ -221,12 +229,24 @@ namespace gitlog_parser
             //System.Console.WriteLine("마지막날" + last_Date);
 
             TimeSpan Calc_Date = last_Date.Subtract(first_Date);
+            string total_calc_date = null;
             // 개발기간을 날만 출력한것
             int Result_Date = Calc_Date.Days;
-
-            System.Console.WriteLine("총 개발일수는 " + Calc_Date);
+            if (Calc_Date.ToString().Contains("."))
+            {
+                string[] str_calc_date = Calc_Date.ToString().Split(new char[] { '.' });
+                for (int i = 0; i < str_calc_date.Length; i++)
+                    str_calc_date[i] = str_calc_date[i].Trim();
+                // tota_calc_date : 총 개발기간을 보여주기 위한 변수
+                total_calc_date = str_calc_date[0] + "일 " + str_calc_date[1];
+            }
+            else
+            {
+                total_calc_date = Calc_Date.ToString();
+            }
+            //System.Console.WriteLine("총 개발일수는 " + Calc_Date);
             //System.Console.WriteLine("값은 : "+Date_parsing[3]);
-            string return_perDate = first_Date.ToString() + '|' + last_Date.ToString() + '|' + Calc_Date.ToString();
+            string return_perDate = first_Date.ToString() + '|' + last_Date.ToString() + '|' + total_calc_date;
             return return_perDate;
         }
         // 사람당 개발기간을 계산하기 위한 함수
@@ -256,9 +276,24 @@ namespace gitlog_parser
             DateTime first_Date = DateTime.Parse(firstCommit);
             DateTime last_Date = DateTime.Parse(lastCommit);
             TimeSpan Calc_Date = last_Date.Subtract(first_Date);
+            string total_calc_date = null;
             // 개발기간을 날만 출력한것
             int Result_Date = Calc_Date.Days;
-            string return_perDate = first_Date.ToString() + '|' + last_Date.ToString() + '|' + Calc_Date.ToString();
+            if(Calc_Date.ToString().Contains("."))
+            {
+                string[] str_calc_date = Calc_Date.ToString().Split(new char[] { '.' });
+                for (int i = 0; i < str_calc_date.Length; i++)
+                    str_calc_date[i] = str_calc_date[i].Trim();
+                // tota_calc_date : 총 개발기간을 보여주기 위한 변수
+                total_calc_date = str_calc_date[0] + "일 " + str_calc_date[1];
+            }
+            else
+            {
+                total_calc_date = Calc_Date.ToString();
+            }
+            //System.Console.WriteLine("총 개발일수는 " + Calc_Date);
+            //System.Console.WriteLine("값은 : "+Date_parsing[3]);
+            string return_perDate = first_Date.ToString() + '|' + last_Date.ToString() + '|' + total_calc_date;
             return return_perDate;
         }
         public void project_analysis(ArrayList parsing_logData)
