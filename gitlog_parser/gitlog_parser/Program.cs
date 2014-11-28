@@ -17,18 +17,18 @@ namespace gitlog_parser
             logData = a.fileRead();
             parsing_logData = a.commitParsing(logData);
             Analysis_Class b = new Analysis_Class();
-            Date_parsing = b.Data_conversion(parsing_logData);
-            string returnvalue = b.project_date(Date_parsing);
-            string[] cut_data = returnvalue.Split(new char[] { '|' });
-            for (int k = 0; k < cut_data.Length; k++)
-                cut_data[k] = cut_data[k].Trim();
+            //Date_parsing = b.Data_conversion(parsing_logData);
+            //string returnvalue = b.project_date(Date_parsing);
+            //string[] cut_data = returnvalue.Split(new char[] { '|' });
+            //for (int k = 0; k < cut_data.Length; k++)
+            //    cut_data[k] = cut_data[k].Trim();
             // 진슬이가 label에 + 로 추가해야 되는 최종 개발 일정 3가지 시작날, 종료날, 진행기간
-            string temp_start_date = cut_data[0];
-            string temp_end_date = cut_data[1];
-            string temp_total_date = cut_data[2];
+            //string temp_start_date = cut_data[0];
+            //string temp_end_date = cut_data[1];
+            //string temp_total_date = cut_data[2];
             // 총개발일정 검증
             //System.Console.WriteLine(returnvalue);
-            b.project_analysis(Date_parsing);
+            //b.project_analysis(Date_parsing);
         }
     }
     class Parsing_class
@@ -47,7 +47,7 @@ namespace gitlog_parser
             string line;
             // Read the file and display it line by line.(파일 포인터)
             System.IO.StreamReader file =
-            new System.IO.StreamReader(@"C:\Users\Seunghyun\Log_Analizer\log.txt");
+            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_bitcoin.txt");
             // Text file로 부터 읽어서 프로그램 내장화
             while ((line = file.ReadLine()) != null)
             {
@@ -117,6 +117,10 @@ namespace gitlog_parser
                                 cut_str[3] = cut_str[3].Trim();
                                 Parsing_Data.Add(cut_str[3]);
                             }
+                            else
+                            {
+                                Parsing_Data.Add("0");
+                            }
                         }
                         else
                         {
@@ -167,12 +171,16 @@ namespace gitlog_parser
             }
             // total test 화면에 출력하며 단위 테스트
             //System.Console.WriteLine(Parsing_Data.Count);
+            System.IO.StreamWriter file = new System.IO.StreamWriter
+   (@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_bitcoin_analysis.txt");
             for (int j = 0; j < Parsing_Data.Count; j++)
             {
-                //if (j % 5 == 2)
-                //{
-                    //System.Console.WriteLine(Parsing_Data[j].ToString());
-                //}
+                if (j % 5 == 2)
+                {
+                    System.Console.WriteLine(j+"번째" + Parsing_Data[j].ToString());
+                    string temp = j + "번째" + Parsing_Data[j].ToString();
+                    file.WriteLine(temp);
+                }
             }
             // Parsing 된 Arraylist 전송
             return Parsing_Data;
@@ -397,8 +405,7 @@ namespace gitlog_parser
                             // System.Console.WriteLine(project_name[j] + "의 삭제수" + tem_per_del);
                             // 성실도
                             tem_per_sinc = project_sincerity(parsing_logData, tem_pjname);
-                            // 성실도 테스트
-                            System.Console.WriteLine("커밋한 날 수 : " + tem_per_sinc);
+                            
                             // 개발기간 계산
                             forparse_total_date = per_pj_date(parsing_logData, tem_pjname);
                             // 받아온 값 나눔 
@@ -418,6 +425,8 @@ namespace gitlog_parser
                 System.Console.WriteLine(project_name[j] + "의 시작날짜" + temp_start_date);
                 System.Console.WriteLine(project_name[j] + "의 종료날짜" + temp_end_date);
                 System.Console.WriteLine(project_name[j] + "의 개발기간" + temp_total_date);
+                // 성실도 테스트
+                System.Console.WriteLine("커밋한 날 수 : " + tem_per_sinc);
                 // 총 코드 수 작성
                 // '추가 - 삭제' 하는 것이 올바른 계산 방법인지 생각해 봐야함
                 temp_total_loc = temp_ins_loc - temp_del_loc;   
