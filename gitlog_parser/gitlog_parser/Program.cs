@@ -300,7 +300,11 @@ namespace gitlog_parser
             ArrayList tempData = logData;
             string tempName = name;
             string tempDate = null;
+ 
+            string[] cut_date = null;   // 날짜만 뽑아내서 저장
+            string yesterday = null;
             int countingNumbersOfDay = 0;
+
             
             // 우선 해당 이름으로 커밋한 작업의 커밋 날짜를 뽑아내야함
             for (int i = 0; i < tempData.Count; i++ )
@@ -308,7 +312,11 @@ namespace gitlog_parser
                 if( tempData[i].Equals(tempName) )      // 이름탐색
                 {   
                     tempDate = tempData[i - 1].ToString();      // 날짜 추출
-                    
+                    cut_date = tempDate.Split(' ');
+                    // 날짜 출력 테스트
+                    System.Console.WriteLine("날짜 - " + tempDate + " -> " + cut_date[0]);
+
+
                 }
             }
 
@@ -359,6 +367,8 @@ namespace gitlog_parser
             int tem_per_del = 0;
             // forparse_total_date : 개발기간을 쪼개기 위한 변수
             string forparse_total_date = null;
+            // tem_per_sinc : 사람당 성실도를 저장하기 위한 변수
+            int tem_per_sinc = 0;
             for (int j = 0; j < project_name.Count; j++)
             {
                 for (int i = 0; i < parsing_logData.Count; i++)
@@ -381,7 +391,11 @@ namespace gitlog_parser
                             temp_del_loc = temp_del_loc + tem_per_del;
                             // 삭제 단위 테스트
                             // System.Console.WriteLine(project_name[j] + "의 삭제수" + tem_per_del);
+                            // 성실도
+                            tem_per_sinc = project_sincerity(parsing_logData, tem_pjname);
+                            // 개발기간 계산
                             forparse_total_date = per_pj_date(parsing_logData, tem_pjname);
+                            // 받아온 값 나눔 
                             string[] cut_data = forparse_total_date.Split(new char[]{'|'});
                             for (int k = 0; k < cut_data.Length; k++)
                                 cut_data[k] = cut_data[k].Trim();
