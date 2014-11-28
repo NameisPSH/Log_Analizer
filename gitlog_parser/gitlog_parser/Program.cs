@@ -17,18 +17,18 @@ namespace gitlog_parser
             logData = a.fileRead();
             parsing_logData = a.commitParsing(logData);
             Analysis_Class b = new Analysis_Class();
-            //Date_parsing = b.Data_conversion(parsing_logData);
-            //string returnvalue = b.project_date(Date_parsing);
-            //string[] cut_data = returnvalue.Split(new char[] { '|' });
-            //for (int k = 0; k < cut_data.Length; k++)
-            //    cut_data[k] = cut_data[k].Trim();
+            Date_parsing = b.Data_conversion(parsing_logData);
+            string returnvalue = b.project_date(Date_parsing);
+            string[] cut_data = returnvalue.Split(new char[] { '|' });
+            for (int k = 0; k < cut_data.Length; k++)
+                cut_data[k] = cut_data[k].Trim();
             // 진슬이가 label에 + 로 추가해야 되는 최종 개발 일정 3가지 시작날, 종료날, 진행기간
-            //string temp_start_date = cut_data[0];
-            //string temp_end_date = cut_data[1];
-            //string temp_total_date = cut_data[2];
+            string temp_start_date = cut_data[0];
+            string temp_end_date = cut_data[1];
+            string temp_total_date = cut_data[2];
             // 총개발일정 검증
-            //System.Console.WriteLine(returnvalue);
-            //b.project_analysis(Date_parsing);
+            System.Console.WriteLine(returnvalue);
+            b.project_analysis(Date_parsing);
         }
     }
     class Parsing_class
@@ -47,7 +47,7 @@ namespace gitlog_parser
             string line;
             // Read the file and display it line by line.(파일 포인터)
             System.IO.StreamReader file =
-            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_bitcoin.txt");
+            new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_libfreenect.txt");
             // Text file로 부터 읽어서 프로그램 내장화
             while ((line = file.ReadLine()) != null)
             {
@@ -171,6 +171,8 @@ namespace gitlog_parser
             }
             // total test 화면에 출력하며 단위 테스트
             //System.Console.WriteLine(Parsing_Data.Count);
+            /* log가 길경우를 대비해서 write하여 값 debug를 위한 파일포인터 생성 및 검증
+             * 
             System.IO.StreamWriter file = new System.IO.StreamWriter
    (@"C:\Users\내문서\Source\Repos\Log_Analizer\gitlog_parser\gitlog_parser\log_bitcoin_analysis.txt");
             for (int j = 0; j < Parsing_Data.Count; j++)
@@ -182,6 +184,7 @@ namespace gitlog_parser
                     file.WriteLine(temp);
                 }
             }
+             */
             // Parsing 된 Arraylist 전송
             return Parsing_Data;
         }
