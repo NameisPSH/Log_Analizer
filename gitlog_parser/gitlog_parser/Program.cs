@@ -314,13 +314,17 @@ namespace gitlog_parser
                     tempDate = tempData[i - 1].ToString();      // 날짜 추출
                     cut_date = tempDate.Split(' ');
                     // 날짜 출력 테스트
-                    System.Console.WriteLine("날짜 - " + tempDate + " -> " + cut_date[0]);
+                    //System.Console.WriteLine("날짜 - " + tempDate + " -> " + cut_date[0]);
 
-
+                    if( cut_date[0].Equals(yesterday) == false )
+                    {
+                        countingNumbersOfDay += 1;
+                        yesterday = cut_date[0];
+                    }
                 }
             }
 
-                return 0;
+                return countingNumbersOfDay;
         }
 
         public void project_analysis(ArrayList parsing_logData)
@@ -393,6 +397,8 @@ namespace gitlog_parser
                             // System.Console.WriteLine(project_name[j] + "의 삭제수" + tem_per_del);
                             // 성실도
                             tem_per_sinc = project_sincerity(parsing_logData, tem_pjname);
+                            // 성실도 테스트
+                            System.Console.WriteLine("커밋한 날 수 : " + tem_per_sinc);
                             // 개발기간 계산
                             forparse_total_date = per_pj_date(parsing_logData, tem_pjname);
                             // 받아온 값 나눔 
