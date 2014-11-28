@@ -252,27 +252,25 @@ namespace gitlog_parser
         // 사람당 개발기간을 계산하기 위한 함수
         public string per_pj_date(ArrayList logData, string name)
         {
-            ArrayList tempData = logData;
-            String tempName = name;
+            ArrayList tempData = logData;   
+            String tempName = name;         // 파싱한 데이터 리스트 전체와 이름을 새로운 변수에 저장해서 사용
             String firstCommit = null;
             String lastCommit = null;
-            int commitFlag = 0;     // firstCommit에 날짜가 저장
-            int indexOfLastCommit = 0;  
+            int indexOfLastCommit = 0;      // 마지막에 커밋한 때의 이름 인덱스를 저장함  
 
             for (int i = 0; i < tempData.Count; i++ )
             {
-                if( tempData[i].Equals(tempName) )
+                if( tempData[i].Equals(tempName) )  // 루프중 해당 이름과 같은 이름을 찾았을 경우
                 {
-                    if( commitFlag == 0 )
+                    if( firstCommit == null )           // 최초로 해당 이름을 찾음
                     {
-                        firstCommit = tempData[i - 1].ToString();
-                        commitFlag = 1;
+                        firstCommit = tempData[i - 1].ToString();   // 해당 위치 (이름 인덱스) - 1 인덱스(날짜) 값
                     }
-                    indexOfLastCommit = i;
+                    indexOfLastCommit = i;      // 현재 인덱스를 마지막으로 커밋한 날짜의 인덱스 값을 가지는 변수에 저장
                 }
-                
             }
-            lastCommit = tempData[indexOfLastCommit - 1].ToString();
+            lastCommit = tempData[indexOfLastCommit - 1].ToString();    // lastCommit에 저장
+
             DateTime first_Date = DateTime.Parse(firstCommit);
             DateTime last_Date = DateTime.Parse(lastCommit);
             TimeSpan Calc_Date = last_Date.Subtract(first_Date);
@@ -296,6 +294,27 @@ namespace gitlog_parser
             string return_perDate = first_Date.ToString() + '|' + last_Date.ToString() + '|' + total_calc_date;
             return return_perDate;
         }
+        // 개인당 성실도를 계산하는 함수
+        public int project_sincerity(ArrayList logData, string name)
+        {
+            ArrayList tempData = logData;
+            string tempName = name;
+            string tempDate = null;
+            int countingNumbersOfDay = 0;
+            
+            // 우선 해당 이름으로 커밋한 작업의 커밋 날짜를 뽑아내야함
+            for (int i = 0; i < tempData.Count; i++ )
+            {
+                if( tempData[i].Equals(tempName) )      // 이름탐색
+                {   
+                    tempDate = tempData[i - 1].ToString();      // 날짜 추출
+                    
+                }
+            }
+
+                return 0;
+        }
+
         public void project_analysis(ArrayList parsing_logData)
         {
             List<string> project_name = new List<string>();
