@@ -249,7 +249,14 @@ namespace gitlog_parser
                 for (int i = 0; i < str_calc_date.Length; i++)
                     str_calc_date[i] = str_calc_date[i].Trim();
                 // tota_calc_date : 총 개발기간을 보여주기 위한 변수
-                total_calc_date = str_calc_date[0] + "일 " + str_calc_date[1];
+                if (int.Parse(str_calc_date[0]) == 1)
+                {
+                    total_calc_date = str_calc_date[0] + " day " + str_calc_date[1];
+                }
+                else
+                {
+                    total_calc_date = str_calc_date[0] + " days " + str_calc_date[1];
+                }
             }
             else
             {
@@ -294,7 +301,14 @@ namespace gitlog_parser
                 for (int i = 0; i < str_calc_date.Length; i++)
                     str_calc_date[i] = str_calc_date[i].Trim();
                 // tota_calc_date : 총 개발기간을 보여주기 위한 변수
-                total_calc_date = str_calc_date[0] + "일 " + str_calc_date[1];
+                if (int.Parse(str_calc_date[0]) == 1)
+                {
+                    total_calc_date = str_calc_date[0] + " day " + str_calc_date[1];
+                }
+                else
+                {
+                    total_calc_date = str_calc_date[0] + " days " + str_calc_date[1];
+                }
             }
             else
             {
@@ -439,7 +453,8 @@ namespace gitlog_parser
                 //System.Console.WriteLine("커밋한 날 수 : " + tem_per_sinc);
                 // 총 코드 수 작성
                 // '추가 - 삭제' 하는 것이 올바른 계산 방법인지 생각해 봐야함 
-                temp_total_loc = temp_ins_loc - temp_del_loc;   
+                temp_total_loc = temp_ins_loc - temp_del_loc;
+                temp_total_loc = Math.Abs(temp_total_loc);
                 // System.Console.WriteLine(project_name[j] + "의 총 코드작성수" + temp_total_loc);
                 
                 // Visualization에 보낼 total Arraylist 선택
