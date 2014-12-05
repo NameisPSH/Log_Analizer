@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Globalization;
 
 namespace gitlog_parser
 {
@@ -231,13 +232,14 @@ namespace gitlog_parser
         //, Boolean flag 전체 프로젝트 기간과, 사람당 프로젝트 기간 정리
         public string project_date(ArrayList Date_parsing)
         {
+            CultureInfo myCI = new CultureInfo("en-US", false);
             string temp_first_Date = Date_parsing[2].ToString();
             DateTime first_Date = DateTime.Parse(temp_first_Date);
             //System.Console.WriteLine("첫날" + first_Date);
 
             string temp_last_Date = Date_parsing[Date_parsing.Count - 3].ToString();
             DateTime last_Date = DateTime.Parse(temp_last_Date);
-            //System.Console.WriteLine("마지막날" + last_Date);
+            System.Console.WriteLine("마지막날" + last_Date);
 
             TimeSpan Calc_Date = last_Date.Subtract(first_Date);
             string total_calc_date = null;
@@ -249,7 +251,14 @@ namespace gitlog_parser
                 for (int i = 0; i < str_calc_date.Length; i++)
                     str_calc_date[i] = str_calc_date[i].Trim();
                 // tota_calc_date : 총 개발기간을 보여주기 위한 변수
-                total_calc_date = str_calc_date[0] + "일 " + str_calc_date[1];
+                if (int.Parse(str_calc_date[0]) == 1)
+                {
+                    total_calc_date = str_calc_date[0] + " day " + str_calc_date[1];
+                }
+                else
+                {
+                    total_calc_date = str_calc_date[0] + " days " + str_calc_date[1];
+                }
             }
             else
             {
@@ -263,6 +272,7 @@ namespace gitlog_parser
         // 사람당 개발기간을 계산하기 위한 함수
         public string per_pj_date(ArrayList logData, string name)
         {
+            
             ArrayList tempData = logData;   
             String tempName = name;         // 파싱한 데이터 리스트 전체와 이름을 새로운 변수에 저장해서 사용
             String firstCommit = null;
@@ -294,7 +304,14 @@ namespace gitlog_parser
                 for (int i = 0; i < str_calc_date.Length; i++)
                     str_calc_date[i] = str_calc_date[i].Trim();
                 // tota_calc_date : 총 개발기간을 보여주기 위한 변수
-                total_calc_date = str_calc_date[0] + "일 " + str_calc_date[1];
+                if (int.Parse(str_calc_date[0]) == 1)
+                {
+                    total_calc_date = str_calc_date[0] + " day " + str_calc_date[1];
+                }
+                else
+                {
+                    total_calc_date = str_calc_date[0] + " days " + str_calc_date[1];
+                }
             }
             else
             {
@@ -439,7 +456,8 @@ namespace gitlog_parser
                 //System.Console.WriteLine("커밋한 날 수 : " + tem_per_sinc);
                 // 총 코드 수 작성
                 // '추가 - 삭제' 하는 것이 올바른 계산 방법인지 생각해 봐야함 
-                temp_total_loc = temp_ins_loc - temp_del_loc;   
+                temp_total_loc = temp_ins_loc - temp_del_loc;
+                temp_total_loc = Math.Abs(temp_total_loc);
                 // System.Console.WriteLine(project_name[j] + "의 총 코드작성수" + temp_total_loc);
                 
                 // Visualization에 보낼 total Arraylist 선택
