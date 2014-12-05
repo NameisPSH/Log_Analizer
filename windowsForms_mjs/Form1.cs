@@ -53,9 +53,7 @@ namespace windowsForms_mjs
                 string parsing_fullPath = fullPathName1;
 
                 string[] cut_str = parsing_fullPath.Split(new char[] {'\\'}, StringSplitOptions.RemoveEmptyEntries);
-                
-
-
+                string project_name = cut_str[cut_str.Length - 2];
 
 
                 parsing_logData = a.commitParsing(logData);
@@ -66,13 +64,18 @@ namespace windowsForms_mjs
                 for (int k = 0; k < cut_data.Length; k++)
                     cut_data[k] = cut_data[k].Trim();
                 // 진슬이가 label에 + 로 추가해야 되는 최종 개발 일정 3가지 시작날, 종료날, 진행기간
-                string temp_start_date = cut_data[0];
-                string temp_end_date = cut_data[1];
+                //string temp_start_date = cut_data[0];
+                //string temp_end_date = cut_data[1];
                 string temp_total_date = cut_data[2];
+
+                
+
+
                 // 총개발일정 검증
                 System.Console.WriteLine(returnvalue);
              
                 final_data = b.project_analysis(Date_parsing);
+                
 
                 // 분석시작 버튼 누르면 분석에 관한 패널 뜸 
                 groupBox1.Visible = false;
@@ -80,6 +83,17 @@ namespace windowsForms_mjs
                 button_bmp_save.Visible = true;
                 button_excel_save.Visible = true;
 
+                // 프로젝트에 대한 정보를 입력하는 부분
+                string total_project_name = "Project name : " + project_name;
+                string total_start_date = "총 개발기간 : " + temp_total_date;
+                string total_locode = "총 Loc 수 : " + b.total_loc;
+                string total_total_date = "총 commit 수 : " + a.totalCommitValue;
+
+                label1.Text = total_project_name;
+                label2.Text = total_start_date;
+                label3.Text = total_locode;
+                label4.Text = total_total_date;
+                
                 //값 넣기
                 dataGridView1.ColumnCount = 10;
                 dataGridView1.Columns[0].Name = "developer name";
@@ -590,7 +604,7 @@ namespace windowsForms_mjs
         }
 class Parsing_class
 {
-    static int totalCommitValue = 0;
+    public int totalCommitValue = 0;
     public ArrayList fileRead(string filename)
     {
         /*
@@ -748,6 +762,7 @@ class Parsing_class
 }
 class Analysis_Class
 {
+    public int total_loc = 0;
     public ArrayList Data_conversion(ArrayList Parsing_Data)
     {
         // 년, 월, 일로 덮어씌우고 return
@@ -756,6 +771,7 @@ class Analysis_Class
         string total_month = null;
         string total_Date = null;
         string data = null;
+
         for (int j = 0; j < Parsing_Data.Count; j++)
         {
             if (j % 5 == 2)
@@ -1012,8 +1028,9 @@ class Analysis_Class
             // '추가 - 삭제' 하는 것이 올바른 계산 방법인지 생각해 봐야함 
             temp_total_loc = temp_ins_loc - temp_del_loc;
             temp_total_loc = Math.Abs(temp_total_loc);
+            total_loc = total_loc + temp_total_loc;
             // System.Console.WriteLine(project_name[j] + "의 총 코드작성수" + temp_total_loc);
-
+            System.Console.WriteLine("totalloc는"+total_loc);
             // Visualization에 보낼 total Arraylist 선택
             total_analysis_data.Add(project_name[j]);
             total_analysis_data.Add(temp_total_date);
@@ -1041,4 +1058,3 @@ class Analysis_Class
         return total_analysis_data;
     }
 }
-
