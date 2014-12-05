@@ -17,6 +17,8 @@ namespace windowsForms_mjs
         Form2 form2;
         // 어떤 값의 그래프를 보여줄 건지 구분하기 위한 변수
         public int graph_state = 0;
+        // 마지막 변환 데이터 저장
+        public ArrayList final_data = new ArrayList();
 
         public Form1()
         {
@@ -46,10 +48,20 @@ namespace windowsForms_mjs
                 ArrayList Date_parsing = new ArrayList();
                 logData = a.fileRead(fullPathName1);
                 parsing_logData = a.commitParsing(logData);
-                //Analysis_Class b = new Analysis_Class();
-                //Date_parsing = b.Data_conversion(parsing_logData);
-                //b.project_date(Date_parsing);
-                //b.project_analysis(Date_parsing);
+                Analysis_Class b = new Analysis_Class();
+                Date_parsing = b.Data_conversion(parsing_logData);
+                string returnvalue = b.project_date(Date_parsing);
+                string[] cut_data = returnvalue.Split(new char[] { '|' });
+                for (int k = 0; k < cut_data.Length; k++)
+                    cut_data[k] = cut_data[k].Trim();
+                // 진슬이가 label에 + 로 추가해야 되는 최종 개발 일정 3가지 시작날, 종료날, 진행기간
+                string temp_start_date = cut_data[0];
+                string temp_end_date = cut_data[1];
+                string temp_total_date = cut_data[2];
+                // 총개발일정 검증
+                System.Console.WriteLine(returnvalue);
+             
+                final_data = b.project_analysis(Date_parsing);
 
                 // 분석시작 버튼 누르면 분석에 관한 패널 뜸 
                 tabPage1.Visible = false;
@@ -60,24 +72,31 @@ namespace windowsForms_mjs
                 button_excel_save.Visible = true;
 
                 //값 넣기
-                dataGridView1.ColumnCount = 5;
-                dataGridView1.Columns[0].Name = "Insertion";
-                dataGridView1.Columns[1].Name = "Deletion";
-                dataGridView1.Columns[2].Name = "날짜";
-                dataGridView1.Columns[3].Name = "개발자 이름";
-                dataGridView1.Columns[4].Name = "email";
+                dataGridView1.ColumnCount = 10;
+                dataGridView1.Columns[0].Name = "개발자 이름";
+                dataGridView1.Columns[1].Name = "총 개발기간";
+                dataGridView1.Columns[2].Name = "총 LoC 수";
+                dataGridView1.Columns[3].Name = "성실도";
+                dataGridView1.Columns[4].Name = "총 commit 수";
+                dataGridView1.Columns[5].Name = "시작 일자";
+                dataGridView1.Columns[6].Name = "종료 일자";
+                dataGridView1.Columns[7].Name = "Insertion";
+                dataGridView1.Columns[8].Name = "Deletion";
+                dataGridView1.Columns[9].Name = "Email";
+
                 // dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader); 
-                for (int i = 0; i < parsing_logData.Count / 5; i++)
+                for (int i = 0; i < final_data.Count / 10; i++)
                 {
-                    string[] rows = { parsing_logData[5 * i].ToString(), parsing_logData[5 * i + 1].ToString(), parsing_logData[5 * i + 2].ToString(), parsing_logData[5 * i + 3].ToString(), parsing_logData[5 * i + 4].ToString() };
+                    string[] rows = {final_data[10 * i].ToString(), final_data[10 * i + 1].ToString(), final_data[10 * i + 2].ToString(), final_data[10 * i + 3].ToString(), final_data[10 * i + 4].ToString(), final_data[10 * i + 5].ToString() ,
+                                       final_data[10 * i + 6].ToString(), final_data[10 * i + 7].ToString(),final_data[10 * i + 8].ToString(),final_data[10 * i + 9].ToString()};
                     dataGridView1.Rows.Add(rows);
                 }
-
-                dataGridView1.Columns[0].DisplayIndex = 3;
-                dataGridView1.Columns[1].DisplayIndex = 4;
-                dataGridView1.Columns[2].DisplayIndex = 2;
-                dataGridView1.Columns[3].DisplayIndex = 0;
-                dataGridView1.Columns[4].DisplayIndex = 1;
+ 
+                //dataGridView1.Columns[0].DisplayIndex = 3;
+                //dataGridView1.Columns[1].DisplayIndex = 4;
+                //dataGridView1.Columns[2].DisplayIndex = 2;
+                //dataGridView1.Columns[3].DisplayIndex = 0;
+                //dataGridView1.Columns[4].DisplayIndex = 1;
             }
         }
 
@@ -492,14 +511,14 @@ namespace windowsForms_mjs
             // 값 배열 생성
 
             // Data에 접근하기 위해 필요한 모든 초기 변수 선언 
-            Parsing_class a = new Parsing_class();
-            ArrayList logData = new ArrayList();
-            ArrayList parsing_logData = new ArrayList();
-            ArrayList Date_parsing = new ArrayList();
-            logData = a.fileRead(fullPathName1);
-            parsing_logData = a.commitParsing(logData);
+            //Parsing_class a = new Parsing_class();
+           // ArrayList logData = new ArrayList();
+           // ArrayList parsing_logData = new ArrayList();
+           // ArrayList Date_parsing = new ArrayList();
+           // logData = a.fileRead(fullPathName1);
+           // parsing_logData = a.commitParsing(logData);
 
-            for (int i = 0; i < parsing_logData.Count / 5; i++)
+            for (int i = 0; i < final_data.Count / 10; i++)
             {
                 //chart1 Series 객체 생성
                 System.Windows.Forms.DataVisualization.Charting.Series seriesColumn =
@@ -516,20 +535,21 @@ namespace windowsForms_mjs
                 seriesLine.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                 seriesPie.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
-                string[] stringValue = { parsing_logData[5 * i].ToString(), parsing_logData[5 * i + 1].ToString(), parsing_logData[5 * i + 2].ToString(), parsing_logData[5 * i + 3].ToString(), parsing_logData[5 * i + 4].ToString() };
+                string[] stringValue = {final_data[10 * i].ToString(), final_data[10 * i + 1].ToString(), final_data[10 * i + 2].ToString(), final_data[10 * i + 3].ToString(), final_data[10 * i + 4].ToString(), final_data[10 * i + 5].ToString() ,
+                                       final_data[10 * i + 6].ToString(), final_data[10 * i + 7].ToString(),final_data[10 * i + 8].ToString(),final_data[10 * i + 9].ToString()};
                 
                 //title 값 입력
-                seriesColumn.Name = stringValue[3];
-                seriesLine.Name = stringValue[3];
-                seriesPie.Name = stringValue[3];
+                seriesColumn.Name = stringValue[0];
+                seriesLine.Name = stringValue[0];
+                seriesPie.Name = stringValue[0];
                 
                 // x축 값 이름으로 설정
-                seriesColumn.AxisLabel = stringValue[3];
-                seriesLine.AxisLabel = stringValue[3];
-                seriesPie.AxisLabel = stringValue[3];
+                seriesColumn.AxisLabel = stringValue[0];
+                seriesLine.AxisLabel = stringValue[0];
+                seriesPie.AxisLabel = stringValue[0];
 
                 // int값으로 바꿔서 그래프 출력
-                // 0 : commit / 1 : Loc / 2 : 성실도 / 3 : 기여도
+                // 0 : commit / 1 : Loc / 2 : 성실도
                 if (graph_state == 0)
                 {
                     seriesColumn.Points.Add(int.Parse(stringValue[0]));
@@ -550,14 +570,6 @@ namespace windowsForms_mjs
                     seriesPie.Points.Add(int.Parse(stringValue[0]));
            
                 }
-                else
-                {
-                    seriesColumn.Points.Add(int.Parse(stringValue[1]));
-                    seriesLine.Points.Add(int.Parse(stringValue[1]));
-                    seriesPie.Points.Add(int.Parse(stringValue[1]));
-           
-                }
-
                 form2.chart1.Series.Add(seriesColumn);
                 form2.chart2.Series.Add(seriesLine);
                 form2.chart3.Series.Add(seriesPie);
@@ -605,12 +617,6 @@ namespace windowsForms_mjs
         {
             // 2일 경우 성실도 보여주기 
             graph_state = 2;
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            // 3일 경우 기여도 보여주기 
-            graph_state = 3;
         }
     }
         }
@@ -921,11 +927,12 @@ class Analysis_Class
         return countingNumbersOfDay;
     }
 
-    public void project_analysis(ArrayList parsing_logData)
+    public ArrayList project_analysis(ArrayList parsing_logData)
     {
 
         List<string> project_name = new List<string>();
         string temp_name = null;
+        ArrayList total_analysis_data = new ArrayList();
         // 프로젝트 참여한 사람 이름만 단독으로 뽑아내기
         for (int i = 0; i < parsing_logData.Count; i++)
         {
@@ -937,7 +944,6 @@ class Analysis_Class
                     project_name.Add(temp_name);
             }
         }
-
 
         //System.Console.WriteLine("사람이름 중복제거 이후");
         // 단위 테스트
@@ -970,6 +976,8 @@ class Analysis_Class
         string forparse_total_date = null;
         // tem_per_sinc : 사람당 성실도를 저장하기 위한 변수
         int tem_per_sinc = 0;
+        // tem_email : 해당 개발자 이메일을 받는 변수
+        string tem_email = null;
         for (int j = 0; j < project_name.Count; j++)
         {
             for (int i = 0; i < parsing_logData.Count; i++)
@@ -985,6 +993,7 @@ class Analysis_Class
                         // insertion 수
                         tem_per_ins = int.Parse(parsing_logData[i - 3].ToString());
                         temp_ins_loc = temp_ins_loc + tem_per_ins;
+                        tem_email = parsing_logData[i + 1].ToString();
                         // 추가 단위 테스트
                         // System.Console.WriteLine(project_name[j] + "의 추가수" + tem_per_ins);
                         // deletion 수
@@ -1008,19 +1017,33 @@ class Analysis_Class
                 }
             }
             // 분석 단위 테스트
-            System.Console.WriteLine(project_name[j] + "의 커밋수" + temp_total_commit);
-            System.Console.WriteLine(project_name[j] + "의 총 추가수" + temp_ins_loc);
-            System.Console.WriteLine(project_name[j] + "의 총 삭제수" + temp_del_loc);
-            System.Console.WriteLine(project_name[j] + "의 시작날짜" + temp_start_date);
-            System.Console.WriteLine(project_name[j] + "의 종료날짜" + temp_end_date);
-            System.Console.WriteLine(project_name[j] + "의 개발기간" + temp_total_date);
+            //System.Console.WriteLine(project_name[j] + "의 이멜" + tem_email);
+            //System.Console.WriteLine(project_name[j] + "의 커밋수" + temp_total_commit);
+            //System.Console.WriteLine(project_name[j] + "의 총 추가수" + temp_ins_loc);
+            //System.Console.WriteLine(project_name[j] + "의 총 삭제수" + temp_del_loc);
+            //System.Console.WriteLine(project_name[j] + "의 시작날짜" + temp_start_date);
+            //System.Console.WriteLine(project_name[j] + "의 종료날짜" + temp_end_date);
+            //System.Console.WriteLine(project_name[j] + "의 개발기간" + temp_total_date);
             // 성실도 테스트
-            System.Console.WriteLine("커밋한 날 수 : " + tem_per_sinc);
+            //System.Console.WriteLine("커밋한 날 수 : " + tem_per_sinc);
             // 총 코드 수 작성
-            // '추가 - 삭제' 하는 것이 올바른 계산 방법인지 생각해 봐야함
+            // '추가 - 삭제' 하는 것이 올바른 계산 방법인지 생각해 봐야함 
             temp_total_loc = temp_ins_loc - temp_del_loc;
             // System.Console.WriteLine(project_name[j] + "의 총 코드작성수" + temp_total_loc);
 
+            // Visualization에 보낼 total Arraylist 선택
+            total_analysis_data.Add(project_name[j]);
+            total_analysis_data.Add(temp_total_date);
+
+            total_analysis_data.Add(temp_total_loc);
+            total_analysis_data.Add(tem_per_sinc);
+
+            total_analysis_data.Add(temp_total_commit);
+            total_analysis_data.Add(temp_start_date);
+            total_analysis_data.Add(temp_end_date);
+            total_analysis_data.Add(temp_ins_loc);
+            total_analysis_data.Add(temp_del_loc);
+            total_analysis_data.Add(tem_email);
 
             // 사람마다 값을 계산해주기 위해 초기화
             temp_total_commit = 0;
@@ -1029,8 +1052,9 @@ class Analysis_Class
             tem_per_del = 0;
             temp_del_loc = 0;
         }
-
-
+        for (int i = 0; i < total_analysis_data.Count; i++)
+            System.Console.WriteLine(total_analysis_data[i]);
+        return total_analysis_data;
     }
 }
 
