@@ -141,7 +141,7 @@
             this.chart3.Location = new System.Drawing.Point(75, 11);
             this.chart3.Name = "chart3";
             series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             series3.YValuesPerPoint = 2;

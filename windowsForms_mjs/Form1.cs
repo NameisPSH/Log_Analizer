@@ -451,7 +451,7 @@ namespace windowsForms_mjs
                 form2.chart3.Series.Add(stringValue[0].ToString());
                 form2.chart1.Series[stringValue[0].ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                 form2.chart2.Series[stringValue[0].ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-                form2.chart3.Series[stringValue[0].ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+                form2.chart3.Series[stringValue[0].ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
 
                 // int값으로 바꿔서 그래프 출력
                 // 0 : commit / 1 : Loc / 2 : 성실도
@@ -485,7 +485,9 @@ namespace windowsForms_mjs
                     //seriesPie.Points.Add(int.Parse(stringValue[3]));
            
                 }
-
+                form2.chart1.Series[stringValue[0].ToString()].IsValueShownAsLabel = true;
+                form2.chart2.Series[stringValue[0].ToString()].IsValueShownAsLabel = true;
+                form2.chart3.Series[stringValue[0].ToString()].IsValueShownAsLabel = true;
                 //form2.chart1.Series.Add(seriesColumn);
                 //form2.chart2.Series.Add(seriesLine);
                 //form2.chart3.Series.Add(seriesPie);
@@ -567,6 +569,11 @@ namespace windowsForms_mjs
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
