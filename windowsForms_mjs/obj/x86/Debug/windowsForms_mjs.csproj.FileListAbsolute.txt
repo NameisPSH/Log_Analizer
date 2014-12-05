@@ -26,3 +26,5 @@ C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\wi
 C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Form2.resources
 C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Properties.Resources.resources
 C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.csproj.GenerateResource.Cache
+C:\Users\Seunghyun\Source\Repos\Log_Analizer6\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.exe
+C:\Users\Seunghyun\Source\Repos\Log_Analizer6\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.pdb

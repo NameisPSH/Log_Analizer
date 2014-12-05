@@ -19,7 +19,8 @@ namespace windowsForms_mjs
             InitializeComponent();
             // chart 리셋
             chart1.Series.Clear();
-            
+            chart2.Series.Clear();
+            chart3.Series.Clear();
 
         }
         //private Form1 otherForm;
@@ -41,6 +42,11 @@ namespace windowsForms_mjs
         }
 
         private void chart2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart3_Click(object sender, EventArgs e)
         {
 
         }
