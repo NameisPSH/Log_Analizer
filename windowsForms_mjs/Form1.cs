@@ -14,7 +14,9 @@ namespace windowsForms_mjs
     public partial class Form1 : Form
     {
         // 폼간 데이터 전송을 위한 변수 선언
-        Form2 child;
+        Form2 form2;
+        // 어떤 값의 그래프를 보여줄 건지 구분하기 위한 변수
+        public int graph_state = 0;
 
         public Form1()
         {
@@ -64,19 +66,6 @@ namespace windowsForms_mjs
                 dataGridView1.Columns[2].Name = "날짜";
                 dataGridView1.Columns[3].Name = "개발자 이름";
                 dataGridView1.Columns[4].Name = "email";
-                // dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader); 
-                for (int i = 0; i < parsing_logData.Count / 5; i++)
-                {
-                    string[] rows = { parsing_logData[5 * i].ToString(), parsing_logData[5 * i + 1].ToString(), parsing_logData[5 * i + 2].ToString(), parsing_logData[5 * i + 3].ToString(), parsing_logData[5 * i + 4].ToString() };
-                    dataGridView1.Rows.Add(rows);
-                }
-
-                dataGridView1.Columns[0].DisplayIndex = 3;
-                dataGridView1.Columns[1].DisplayIndex = 4;
-                dataGridView1.Columns[2].DisplayIndex = 2;
-                dataGridView1.Columns[3].DisplayIndex = 0;
-                dataGridView1.Columns[4].DisplayIndex = 1;
-
                 // dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader); 
                 for (int i = 0; i < parsing_logData.Count / 5; i++)
                 {
@@ -498,24 +487,85 @@ namespace windowsForms_mjs
 
         private void button_graph_Click(object sender, EventArgs e)
         {
-            //form1이 로드될 때 자식 폼 form2 생성
-            child = new Form2();
-            // 자식 폼의 모든 데이터 세팅 
-            string[] seriesArray = { "Cats", "Dogs" };
-            int[] pointsArray = { 1, 2 };
-            //child.chart1.Titles.Add("hi");
+            form2 = new Form2();
+            form2.Owner = this;
+            // 값 배열 생성
 
-            for (int i = 0; i < seriesArray.Length; i++)
+            // Data에 접근하기 위해 필요한 모든 초기 변수 선언 
+            Parsing_class a = new Parsing_class();
+            ArrayList logData = new ArrayList();
+            ArrayList parsing_logData = new ArrayList();
+            ArrayList Date_parsing = new ArrayList();
+            logData = a.fileRead(fullPathName1);
+            parsing_logData = a.commitParsing(logData);
+
+            for (int i = 0; i < parsing_logData.Count / 5; i++)
             {
-                // Add series.
-                //Series series = child.chart1.Series.Add(seriesArray[i]);
+                //chart1 Series 객체 생성
+                System.Windows.Forms.DataVisualization.Charting.Series seriesColumn =
+                    new System.Windows.Forms.DataVisualization.Charting.Series();
+                //chart2 Series 객체 생성
+                System.Windows.Forms.DataVisualization.Charting.Series seriesLine =
+                    new System.Windows.Forms.DataVisualization.Charting.Series();
+                //chart3 Series 객체 생성
+                System.Windows.Forms.DataVisualization.Charting.Series seriesPie =
+                    new System.Windows.Forms.DataVisualization.Charting.Series();
 
-                // Add point.
-                // series.Points.Add(pointsArray[i]);
+                // chart type 설정
+                seriesColumn.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                seriesLine.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                seriesPie.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+
+                string[] stringValue = { parsing_logData[5 * i].ToString(), parsing_logData[5 * i + 1].ToString(), parsing_logData[5 * i + 2].ToString(), parsing_logData[5 * i + 3].ToString(), parsing_logData[5 * i + 4].ToString() };
+
+                //title 값 입력
+                seriesColumn.Name = stringValue[3];
+                seriesLine.Name = stringValue[3];
+                seriesPie.Name = stringValue[3];
+
+                // x축 값 이름으로 설정
+                seriesColumn.AxisLabel = stringValue[3];
+                seriesLine.AxisLabel = stringValue[3];
+                seriesPie.AxisLabel = stringValue[3];
+
+                // int값으로 바꿔서 그래프 출력
+                // 0 : commit / 1 : Loc / 2 : 성실도 / 3 : 기여도
+                if (graph_state == 0)
+                {
+                    seriesColumn.Points.Add(int.Parse(stringValue[0]));
+                    seriesLine.Points.Add(int.Parse(stringValue[0]));
+                    seriesPie.Points.Add(int.Parse(stringValue[0]));
+                }
+                else if (graph_state == 1)
+                {
+                    seriesColumn.Points.Add(int.Parse(stringValue[1]));
+                    seriesLine.Points.Add(int.Parse(stringValue[1]));
+                    seriesPie.Points.Add(int.Parse(stringValue[1]));
+
+                }
+                else if (graph_state == 2)
+                {
+                    seriesColumn.Points.Add(int.Parse(stringValue[0]));
+                    seriesLine.Points.Add(int.Parse(stringValue[0]));
+                    seriesPie.Points.Add(int.Parse(stringValue[0]));
+
+                }
+                else
+                {
+                    seriesColumn.Points.Add(int.Parse(stringValue[1]));
+                    seriesLine.Points.Add(int.Parse(stringValue[1]));
+                    seriesPie.Points.Add(int.Parse(stringValue[1]));
+
+                }
+
+                form2.chart1.Series.Add(seriesColumn);
+                form2.chart2.Series.Add(seriesLine);
+                form2.chart3.Series.Add(seriesPie);
             }
 
+
             //그래프 보기 버튼을 누르면 새로운 폼 생성
-            child.ShowDialog();
+            form2.ShowDialog();
 
         }
 
@@ -531,6 +581,7 @@ namespace windowsForms_mjs
             // 불러온 파일 초기화 & datagridview reset
             this.dataGridView1.Rows.Clear();
             textBoxSFile.Text = null;
+            fullPathName1 = null;
         }
 
         private void button_excel_save_Click(object sender, EventArgs e)
@@ -538,10 +589,28 @@ namespace windowsForms_mjs
             MessageBox.Show("엑셀파일로 저장완료");
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
         {
+            // 0일 경우 commit 수 보여주기 
+            graph_state = 0;
+        }
 
-            //
+        private void radioButton2_CheckedChanged_1(object sender, EventArgs e)
+        {
+            // 1일 경우 LoC 수 보여주기 
+            graph_state = 1;
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            // 2일 경우 성실도 보여주기 
+            graph_state = 2;
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            // 3일 경우 기여도 보여주기 
+            graph_state = 3;
         }
     }
 }
