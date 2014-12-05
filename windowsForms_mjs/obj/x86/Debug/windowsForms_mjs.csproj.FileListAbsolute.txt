@@ -35,3 +35,12 @@ C:\Users\Seunghyun\Source\Repos\Log_Analizer6\windowsForms_mjs\obj\x86\Debug\win
 C:\Users\Seunghyun\Source\Repos\Log_Analizer6\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Form2.resources
 C:\Users\Seunghyun\Source\Repos\Log_Analizer6\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Properties.Resources.resources
 C:\Users\Seunghyun\Source\Repos\Log_Analizer6\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.csproj.GenerateResource.Cache
+C:\Users\내문서\Source\Repos\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.exe
+C:\Users\내문서\Source\Repos\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.pdb
+C:\Users\내문서\Source\Repos\windowsForms_mjs\bin\Debug\windowsForms_mjs.exe
+C:\Users\내문서\Source\Repos\windowsForms_mjs\bin\Debug\windowsForms_mjs.pdb
+C:\Users\내문서\Source\Repos\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.csprojResolveAssemblyReference.cache
+C:\Users\내문서\Source\Repos\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Form1.resources
+C:\Users\내문서\Source\Repos\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Form2.resources
+C:\Users\내문서\Source\Repos\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Properties.Resources.resources
+C:\Users\내문서\Source\Repos\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.csproj.GenerateResource.Cache

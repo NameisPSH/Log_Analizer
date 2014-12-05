@@ -25,7 +25,6 @@ namespace windowsForms_mjs
         public Form1()
         {
             InitializeComponent();
-
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -49,6 +48,16 @@ namespace windowsForms_mjs
                 ArrayList parsing_logData = new ArrayList();
                 ArrayList Date_parsing = new ArrayList();
                 logData = a.fileRead(fullPathName1);
+
+
+                string parsing_fullPath = fullPathName1;
+
+                string[] cut_str = parsing_fullPath.Split(new char[] {'\\'}, StringSplitOptions.RemoveEmptyEntries);
+                
+
+
+
+
                 parsing_logData = a.commitParsing(logData);
                 Analysis_Class b = new Analysis_Class();
                 Date_parsing = b.Data_conversion(parsing_logData);

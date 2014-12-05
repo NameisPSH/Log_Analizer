@@ -50,12 +50,19 @@ namespace gitlog_parser
             System.IO.StreamReader file =
             new System.IO.StreamReader(@"C:\Users\내문서\Source\Repos\gitlog_parser\gitlog_parser\log.txt");
             // Text file로 부터 읽어서 프로그램 내장화
-            while ((line = file.ReadLine()) != null)
-            {
-                //System.Console.WriteLine(line);
-                temp_logTotalData.Add(line);
-                counter++;
-            }
+            /* Project Name을 추출하기 위한 Test
+            string tem_cur_str = @"C:\Users\내문서\Source\Repos\gitlog_parser\gitlog_parser\log.txt";
+            string[] cut_str = tem_cur_str.Split(new char[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < cut_str.Length;i++ )
+                System.Console.WriteLine(cut_str[i]);
+                while ((line = file.ReadLine()) != null)
+                {
+                    //System.Console.WriteLine(line);
+                    temp_logTotalData.Add(line);
+                    counter++;
+                }
+            */
             // Log text 역순 재정렬
             for (int i = temp_logTotalData.Count; i > 0; i--)
             {
