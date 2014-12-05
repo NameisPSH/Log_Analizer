@@ -75,23 +75,27 @@ namespace windowsForms_mjs
 
                 //값 넣기
                 dataGridView1.ColumnCount = 10;
-                dataGridView1.Columns[0].Name = "개발자 이름";
-                dataGridView1.Columns[1].Name = "총 개발기간";
-                dataGridView1.Columns[2].Name = "총 LoC 수";
-                dataGridView1.Columns[3].Name = "성실도";
-                dataGridView1.Columns[4].Name = "총 commit 수";
-                dataGridView1.Columns[5].Name = "시작 일자";
-                dataGridView1.Columns[6].Name = "종료 일자";
+                dataGridView1.Columns[0].Name = "developer name";
+                dataGridView1.Columns[1].Name = "Total development time";
+                dataGridView1.Columns[2].Name = "Total LoC";
+                dataGridView1.Columns[3].Name = "sincerity";
+                dataGridView1.Columns[4].Name = "Total commit";
+                dataGridView1.Columns[5].Name = "start time";
+                dataGridView1.Columns[6].Name = "finish time";
                 dataGridView1.Columns[7].Name = "Insertion";
                 dataGridView1.Columns[8].Name = "Deletion";
                 dataGridView1.Columns[9].Name = "Email";
 
-                // dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader); 
+                dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 for (int i = 0; i < final_data.Count / 10; i++)
                 {
                     string[] rows = {final_data[10 * i].ToString(), final_data[10 * i + 1].ToString(), final_data[10 * i + 2].ToString(), final_data[10 * i + 3].ToString(), final_data[10 * i + 4].ToString(), final_data[10 * i + 5].ToString() ,
                                        final_data[10 * i + 6].ToString(), final_data[10 * i + 7].ToString(),final_data[10 * i + 8].ToString(),final_data[10 * i + 9].ToString()};
                     dataGridView1.Rows.Add(rows);
+                    // column 크기 자동 조절
+
+                    dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells); 
                 }
 
                 //dataGridView1.Columns[0].DisplayIndex = 3;
