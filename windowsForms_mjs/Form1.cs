@@ -552,22 +552,22 @@ namespace windowsForms_mjs
                 // 0 : commit / 1 : Loc / 2 : 성실도
                 if (graph_state == 0)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[0]));
-                    seriesLine.Points.Add(int.Parse(stringValue[0]));
-                    seriesPie.Points.Add(int.Parse(stringValue[0]));
+                    seriesColumn.Points.Add(int.Parse(stringValue[4]));
+                    seriesLine.Points.Add(int.Parse(stringValue[4]));
+                    seriesPie.Points.Add(int.Parse(stringValue[4]));
                 }
                 else if (graph_state == 1)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[1]));
-                    seriesLine.Points.Add(int.Parse(stringValue[1]));
-                    seriesPie.Points.Add(int.Parse(stringValue[1]));
+                    seriesColumn.Points.Add(int.Parse(stringValue[2]));
+                    seriesLine.Points.Add(int.Parse(stringValue[2]));
+                    seriesPie.Points.Add(int.Parse(stringValue[2]));
            
                 }
                 else if (graph_state == 2)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[0]));
-                    seriesLine.Points.Add(int.Parse(stringValue[0]));
-                    seriesPie.Points.Add(int.Parse(stringValue[0]));
+                    seriesColumn.Points.Add(int.Parse(stringValue[3]));
+                    seriesLine.Points.Add(int.Parse(stringValue[3]));
+                    seriesPie.Points.Add(int.Parse(stringValue[3]));
            
                 }
                 form2.chart1.Series.Add(seriesColumn);
