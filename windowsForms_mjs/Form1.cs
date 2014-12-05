@@ -91,7 +91,7 @@ namespace windowsForms_mjs
                                        final_data[10 * i + 6].ToString(), final_data[10 * i + 7].ToString(),final_data[10 * i + 8].ToString(),final_data[10 * i + 9].ToString()};
                     dataGridView1.Rows.Add(rows);
                 }
- 
+
                 //dataGridView1.Columns[0].DisplayIndex = 3;
                 //dataGridView1.Columns[1].DisplayIndex = 4;
                 //dataGridView1.Columns[2].DisplayIndex = 2;
