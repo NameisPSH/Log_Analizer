@@ -7,8 +7,22 @@ c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\wind
 c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\GenerateResource.write.1.tlog
 c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.exe
 c:\users\moonjinseul\documents\visual studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.pdb
-C:\Users\GD\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.exe
-C:\Users\GD\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.pdb
+C:\Users\MoonJinSeul\Documents\Visual Studio 2010\Projects\windowsForms_mjs\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Form2.resources
+C:\Users\MoonJinseul\Desktop\windowsForms_mjs[1]\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.exe
+C:\Users\MoonJinseul\Desktop\windowsForms_mjs[1]\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.pdb
+C:\Users\MoonJinseul\Desktop\windowsForms_mjs[1]\windowsForms_mjs\bin\Debug\windowsForms_mjs.exe
+C:\Users\MoonJinseul\Desktop\windowsForms_mjs[1]\windowsForms_mjs\bin\Debug\windowsForms_mjs.pdb
+C:\Users\MoonJinseul\Desktop\windowsForms_mjs[1]\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.csprojResolveAssemblyReference.cache
+C:\Users\MoonJinseul\Desktop\windowsForms_mjs[1]\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Form1.resources
+C:\Users\MoonJinseul\Desktop\windowsForms_mjs[1]\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Form2.resources
+C:\Users\MoonJinseul\Desktop\windowsForms_mjs[1]\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Properties.Resources.resources
+C:\Users\MoonJinseul\Desktop\windowsForms_mjs[1]\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.csproj.GenerateResource.Cache
 C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.exe
 C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.pdb
+C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\bin\Debug\windowsForms_mjs.exe
+C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\bin\Debug\windowsForms_mjs.pdb
 C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.csprojResolveAssemblyReference.cache
+C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Form1.resources
+C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Form2.resources
+C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.Properties.Resources.resources
+C:\Users\MoonJinseul\Source\Repos\Log_Analizer\windowsForms_mjs\obj\x86\Debug\windowsForms_mjs.csproj.GenerateResource.Cache
