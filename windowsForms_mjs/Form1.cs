@@ -524,8 +524,19 @@ namespace windowsForms_mjs
            // logData = a.fileRead(fullPathName1);
            // parsing_logData = a.commitParsing(logData);
 
+
+
+            form2.chart1.Series.Add("Series1");
+            form2.chart2.Series.Add("Series2");
+            form2.chart3.Series.Add("Series3");
+            // charttype 설정 
+            form2.chart1.Series["Series1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            form2.chart2.Series["Series2"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            form2.chart3.Series["Series3"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+
             for (int i = 0; i < final_data.Count / 10; i++)
             {
+                /*
                 //chart1 Series 객체 생성
                 System.Windows.Forms.DataVisualization.Charting.Series seriesColumn =
                     new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -535,50 +546,60 @@ namespace windowsForms_mjs
                 //chart3 Series 객체 생성
                 System.Windows.Forms.DataVisualization.Charting.Series seriesPie =
                     new System.Windows.Forms.DataVisualization.Charting.Series();
-          
                 // chart type 설정
                 seriesColumn.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                 seriesLine.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                 seriesPie.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
+                                  */
+
                 string[] stringValue = {final_data[10 * i].ToString(), final_data[10 * i + 1].ToString(), final_data[10 * i + 2].ToString(), final_data[10 * i + 3].ToString(), final_data[10 * i + 4].ToString(), final_data[10 * i + 5].ToString() ,
                                        final_data[10 * i + 6].ToString(), final_data[10 * i + 7].ToString(),final_data[10 * i + 8].ToString(),final_data[10 * i + 9].ToString()};
                 
                 //title 값 입력
-                seriesColumn.Name = stringValue[0];
-                seriesLine.Name = stringValue[0];
-                seriesPie.Name = stringValue[0];
-                
+                //seriesColumn.Name = stringValue[0];
+                //seriesLine.Name = stringValue[0];
+                //seriesPie.Name = stringValue[0];
                 // x축 값 이름으로 설정
-                seriesColumn.AxisLabel = stringValue[0];
-                seriesLine.AxisLabel = stringValue[0];
-                seriesPie.AxisLabel = stringValue[0];
+                //seriesColumn.AxisLabel = stringValue[0];
+                //seriesLine.AxisLabel = stringValue[0];
+                //seriesPie.AxisLabel = stringValue[0];
 
                 // int값으로 바꿔서 그래프 출력
                 // 0 : commit / 1 : Loc / 2 : 성실도
                 if (graph_state == 0)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[4]));
-                    seriesLine.Points.Add(int.Parse(stringValue[4]));
-                    seriesPie.Points.Add(int.Parse(stringValue[4]));
+                    form2.chart1.Series["Series1"].Points.AddXY(i,(int.Parse(stringValue[4])));
+                    form2.chart2.Series["Series2"].Points.AddXY(i,(int.Parse(stringValue[4])));
+                    form2.chart3.Series["Series3"].Points.AddXY(i,(int.Parse(stringValue[4])));
+                    //seriesColumn.Points.Add(int.Parse(stringValue[4]));
+                    //seriesLine.Points.Add(int.Parse(stringValue[4]));
+                    //seriesPie.Points.Add(int.Parse(stringValue[4]));
                 }
                 else if (graph_state == 1)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[2]));
-                    seriesLine.Points.Add(int.Parse(stringValue[2]));
-                    seriesPie.Points.Add(int.Parse(stringValue[2]));
+                    form2.chart1.Series["Series1"].Points.AddXY(i, (int.Parse(stringValue[2])));
+                    form2.chart2.Series["Series2"].Points.AddXY(i, (int.Parse(stringValue[2])));
+                    form2.chart3.Series["Series3"].Points.AddXY(i, (int.Parse(stringValue[2])));
+                    //seriesColumn.Points.Add(int.Parse(stringValue[2]));
+                    //seriesLine.Points.Add(int.Parse(stringValue[2]));
+                    //seriesPie.Points.Add(int.Parse(stringValue[2]));
            
                 }
                 else if (graph_state == 2)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[3]));
-                    seriesLine.Points.Add(int.Parse(stringValue[3]));
-                    seriesPie.Points.Add(int.Parse(stringValue[3]));
+                    form2.chart1.Series["Series1"].Points.AddXY(i, (int.Parse(stringValue[3])));
+                    form2.chart2.Series["Series2"].Points.AddXY(i, (int.Parse(stringValue[3])));
+                    form2.chart3.Series["Series3"].Points.AddXY(i, (int.Parse(stringValue[3])));
+                    //seriesColumn.Points.Add(int.Parse(stringValue[3]));
+                    //seriesLine.Points.Add(int.Parse(stringValue[3]));
+                    //seriesPie.Points.Add(int.Parse(stringValue[3]));
            
                 }
-                form2.chart1.Series.Add(seriesColumn);
-                form2.chart2.Series.Add(seriesLine);
-                form2.chart3.Series.Add(seriesPie);
+
+                //form2.chart1.Series.Add(seriesColumn);
+                //form2.chart2.Series.Add(seriesLine);
+                //form2.chart3.Series.Add(seriesPie);
             }
 
             
