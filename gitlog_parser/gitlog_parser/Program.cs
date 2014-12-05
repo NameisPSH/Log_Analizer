@@ -319,7 +319,7 @@ namespace gitlog_parser
             
             // 우선 해당 이름으로 커밋한 작업의 커밋 날짜를 뽑아내야함
             for (int i = 0; i < tempData.Count; i++ )
-            {
+            { 
                 if( tempData[i].Equals(tempName) )      // 이름탐색
                 {   
                     tempDate = tempData[i - 1].ToString();      // 날짜 추출
