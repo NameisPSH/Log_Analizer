@@ -338,6 +338,7 @@ namespace gitlog_parser
                 return countingNumbersOfDay;
         }
         // 기여도 계산
+        /*
         public ArrayList project_Contribution(ArrayList contributionTable, int totalCommit, int totalLoc)
         {
             ArrayList tempData = contributionTable;   // 환산된 점수 저장
@@ -361,6 +362,7 @@ namespace gitlog_parser
             // 최고 성실도를 가진 값을 지표로 점수 계산
             return tempData;
         }
+        */
 
         public void project_analysis(ArrayList parsing_logData)
         {
