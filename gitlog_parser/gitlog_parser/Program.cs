@@ -337,32 +337,6 @@ namespace gitlog_parser
 
                 return countingNumbersOfDay;
         }
-        // 기여도 계산
-        /*
-        public ArrayList project_Contribution(ArrayList contributionTable, int totalCommit, int totalLoc)
-        {
-            ArrayList tempData = contributionTable;   // 환산된 점수 저장
-            float tempCommit = 0;   // 계산 후 임시저장
-            float tempLoc = 0;
-
-            // contributionTable | 0. 이름 | 1. 커밋수 | 2. LOC수 | 3. 성실도 | 4. 기여도 |
-
-            int numbersOfContributer = tempData.Count / 5;      //전체 인원수
-            // 커밋 수, 코드 수를 점수로 환산
-            for (int i = 0; i < contributionTable.Count; i++ )
-            {
-                if (i % 5 == 1)
-                {
-                    tempCommit = ((float)tempData[i]) / ((float)totalCommit / (float)numbersOfContributer) * 100;
-                    tempData[i] = tempCommit;    // 커밋수
-                    tempLoc = ((float)tempData[i + 1]) / ((float)totalLoc / (float)numbersOfContributer) * 100;
-                    tempData[i + 1] = tempLoc;      // 코드수
-                }
-            }
-            // 최고 성실도를 가진 값을 지표로 점수 계산
-            return tempData;
-        }
-        */
 
         public void project_analysis(ArrayList parsing_logData)
         {
@@ -380,10 +354,6 @@ namespace gitlog_parser
                         project_name.Add(temp_name);
                 }
             }
-            ArrayList tempContribution = new ArrayList();   // 기여도 계산을 위한 자료들 저장
-
-            int totalPjCommit = 0;      // 프로젝트의 전체 커밋수를 계산
-            int totalPjLoc = 0;         // 프로젝트의 전체 코드수(LOC)를 계산
 
 
             //System.Console.WriteLine("사람이름 중복제거 이후");
@@ -467,14 +437,7 @@ namespace gitlog_parser
                 // '추가 - 삭제' 하는 것이 올바른 계산 방법인지 생각해 봐야함
                 temp_total_loc = temp_ins_loc - temp_del_loc;   
                 // System.Console.WriteLine(project_name[j] + "의 총 코드작성수" + temp_total_loc);
-                // 기여도 계산을 위한 리스트 및 변수 저장
-                tempContribution.Add(tem_pjname);
-                tempContribution.Add(temp_total_commit);
-                tempContribution.Add(temp_total_loc);
-                tempContribution.Add(tem_per_sinc);
-                tempContribution.Add(null);     // 아직 계산안한 기여도의 자리
-                totalPjCommit += temp_total_commit;
-                totalPjLoc += temp_total_loc;
+                
                 
                 // 사람마다 값을 계산해주기 위해 초기화
                 temp_total_commit = 0;
