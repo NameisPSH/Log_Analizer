@@ -73,37 +73,23 @@ namespace windowsForms_mjs
 
                 //값 넣기
                 dataGridView1.ColumnCount = 10;
-                dataGridView1.Columns[0].Name = "Developer name";
-                dataGridView1.Columns[1].Name = "Total development period";
-                dataGridView1.Columns[2].Name = "Total LoC";
-                dataGridView1.Columns[3].Name = "Sincerity";
-                dataGridView1.Columns[4].Name = "Total commit";
-                dataGridView1.Columns[5].Name = "start time";
-                dataGridView1.Columns[6].Name = "finish time";
+                dataGridView1.Columns[0].Name = "개발자 이름";
+                dataGridView1.Columns[1].Name = "총 개발기간";
+                dataGridView1.Columns[2].Name = "총 LoC 수";
+                dataGridView1.Columns[3].Name = "성실도";
+                dataGridView1.Columns[4].Name = "총 commit 수";
+                dataGridView1.Columns[5].Name = "시작 일자";
+                dataGridView1.Columns[6].Name = "종료 일자";
                 dataGridView1.Columns[7].Name = "Insertion";
                 dataGridView1.Columns[8].Name = "Deletion";
                 dataGridView1.Columns[9].Name = "Email";
-
-
 
                 // dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader); 
                 for (int i = 0; i < final_data.Count / 10; i++)
                 {
                     string[] rows = {final_data[10 * i].ToString(), final_data[10 * i + 1].ToString(), final_data[10 * i + 2].ToString(), final_data[10 * i + 3].ToString(), final_data[10 * i + 4].ToString(), final_data[10 * i + 5].ToString() ,
-                                      final_data[10 * i + 6].ToString(), final_data[10 * i + 7].ToString(),final_data[10 * i + 8].ToString(),final_data[10 * i + 9].ToString()};
-                    
+                                       final_data[10 * i + 6].ToString(), final_data[10 * i + 7].ToString(),final_data[10 * i + 8].ToString(),final_data[10 * i + 9].ToString()};
                     dataGridView1.Rows.Add(rows);
-                    //dataGridView1.Rows[i].Cells[0].Value = final_data[10 * i].ToString();
-                    //dataGridView1.Rows[i].Cells[1].Value = final_data[10 * i +1].ToString();
-                    //dataGridView1.Rows[i].Cells[2].Value = int.Parse(final_data[10 * i +2].ToString());
-                    //dataGridView1.Rows[i].Cells[3].Value = int.Parse(final_data[10 * i+ 3].ToString());
-                    //dataGridView1.Rows[i].Cells[4].Value = int.Parse(final_data[10 * i+4].ToString());
-                    //dataGridView1.Rows[i].Cells[5].Value = final_data[10 * i+5].ToString();
-                    //dataGridView1.Rows[i].Cells[6].Value = final_data[10 * i+6].ToString();
-                    //dataGridView1.Rows[i].Cells[7].Value = int.Parse(final_data[10 * i+7].ToString());
-                    //dataGridView1.Rows[i].Cells[8].Value = int.Parse(final_data[10 * i+8].ToString());
-                    //dataGridView1.Rows[i].Cells[9].Value = final_data[10 * i+9].ToString();
-
                 }
 
                 //dataGridView1.Columns[0].DisplayIndex = 3;
@@ -551,40 +537,38 @@ namespace windowsForms_mjs
 
                 string[] stringValue = {final_data[10 * i].ToString(), final_data[10 * i + 1].ToString(), final_data[10 * i + 2].ToString(), final_data[10 * i + 3].ToString(), final_data[10 * i + 4].ToString(), final_data[10 * i + 5].ToString() ,
                                        final_data[10 * i + 6].ToString(), final_data[10 * i + 7].ToString(),final_data[10 * i + 8].ToString(),final_data[10 * i + 9].ToString()};
-
-
+                
                 //title 값 입력
                 seriesColumn.Name = stringValue[0];
                 seriesLine.Name = stringValue[0];
                 seriesPie.Name = stringValue[0];
                 
                 // x축 값 이름으로 설정
-               //프로젝트 명으로 설정하기
-                // seriesColumn.AxisLabel = stringValue[0];
-               // seriesLine.AxisLabel = stringValue[0];
-               // seriesPie.AxisLabel = stringValue[0];
-  
+                seriesColumn.AxisLabel = stringValue[0];
+                seriesLine.AxisLabel = stringValue[0];
+                seriesPie.AxisLabel = stringValue[0];
 
                 // int값으로 바꿔서 그래프 출력
                 // 0 : commit / 1 : Loc / 2 : 성실도
                 if (graph_state == 0)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[4]));
-                    seriesLine.Points.Add(int.Parse(stringValue[4]));
-                    seriesPie.Points.Add(int.Parse(stringValue[4]));
+                    seriesColumn.Points.Add(int.Parse(stringValue[0]));
+                    seriesLine.Points.Add(int.Parse(stringValue[0]));
+                    seriesPie.Points.Add(int.Parse(stringValue[0]));
                 }
                 else if (graph_state == 1)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[2]));
-                    seriesLine.Points.Add(int.Parse(stringValue[2]));
-                    seriesPie.Points.Add(int.Parse(stringValue[2]));
+                    seriesColumn.Points.Add(int.Parse(stringValue[1]));
+                    seriesLine.Points.Add(int.Parse(stringValue[1]));
+                    seriesPie.Points.Add(int.Parse(stringValue[1]));
            
                 }
                 else if (graph_state == 2)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[3]));
-                    seriesLine.Points.Add(int.Parse(stringValue[3]));
-                    seriesPie.Points.Add(int.Parse(stringValue[3]));
+                    seriesColumn.Points.Add(int.Parse(stringValue[0]));
+                    seriesLine.Points.Add(int.Parse(stringValue[0]));
+                    seriesPie.Points.Add(int.Parse(stringValue[0]));
+           
                 }
                 form2.chart1.Series.Add(seriesColumn);
                 form2.chart2.Series.Add(seriesLine);
