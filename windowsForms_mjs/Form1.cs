@@ -1029,6 +1029,7 @@ class Analysis_Class
             // 총 코드 수 작성
             // '추가 - 삭제' 하는 것이 올바른 계산 방법인지 생각해 봐야함 
             temp_total_loc = temp_ins_loc - temp_del_loc;
+            temp_total_loc = Math.Abs(temp_total_loc);
             // System.Console.WriteLine(project_name[j] + "의 총 코드작성수" + temp_total_loc);
 
             // Visualization에 보낼 total Arraylist 선택
