@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
+using System.IO;
 
 namespace windowsForms_mjs
 {
@@ -552,22 +554,22 @@ namespace windowsForms_mjs
                 // 0 : commit / 1 : Loc / 2 : 성실도
                 if (graph_state == 0)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[4]));
-                    seriesLine.Points.Add(int.Parse(stringValue[4]));
-                    seriesPie.Points.Add(int.Parse(stringValue[4]));
+                    seriesColumn.Points.Add(int.Parse(stringValue[0]));
+                    seriesLine.Points.Add(int.Parse(stringValue[0]));
+                    seriesPie.Points.Add(int.Parse(stringValue[0]));
                 }
                 else if (graph_state == 1)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[2]));
-                    seriesLine.Points.Add(int.Parse(stringValue[2]));
-                    seriesPie.Points.Add(int.Parse(stringValue[2]));
+                    seriesColumn.Points.Add(int.Parse(stringValue[1]));
+                    seriesLine.Points.Add(int.Parse(stringValue[1]));
+                    seriesPie.Points.Add(int.Parse(stringValue[1]));
            
                 }
                 else if (graph_state == 2)
                 {
-                    seriesColumn.Points.Add(int.Parse(stringValue[3]));
-                    seriesLine.Points.Add(int.Parse(stringValue[3]));
-                    seriesPie.Points.Add(int.Parse(stringValue[3]));
+                    seriesColumn.Points.Add(int.Parse(stringValue[0]));
+                    seriesLine.Points.Add(int.Parse(stringValue[0]));
+                    seriesPie.Points.Add(int.Parse(stringValue[0]));
            
                 }
                 form2.chart1.Series.Add(seriesColumn);
@@ -595,9 +597,42 @@ namespace windowsForms_mjs
             textBoxSFile.Text = null;
             fullPathName1 = null;
         }
+       public void ToCsV(DataGridView dGV, string filename)
+        {
+            string stOutput = "";
+            // Export titles:
+            string sHeaders = "";
 
+            for (int j = 0; j < dGV.Columns.Count; j++)
+                sHeaders = sHeaders.ToString() + Convert.ToString(dGV.Columns[j].HeaderText) + "\t";
+            stOutput += sHeaders + "\r\n";
+            // Export data.
+            for (int i = 0; i < dGV.RowCount - 1; i++)
+            {
+                string stLine = "";
+                for (int j = 0; j < dGV.Rows[i].Cells.Count; j++)
+                    stLine = stLine.ToString() + Convert.ToString(dGV.Rows[i].Cells[j].Value) + "\t";
+                stOutput += stLine + "\r\n";
+            }
+            Encoding utf16 = Encoding.GetEncoding(1254);
+            byte[] output = utf16.GetBytes(stOutput);
+            FileStream fs = new FileStream(filename, FileMode.Create);
+            BinaryWriter bw = new BinaryWriter(fs);
+            bw.Write(output, 0, output.Length); //write the encoded file
+            bw.Flush();
+            bw.Close();
+            fs.Close();
+        }
         private void button_excel_save_Click(object sender, EventArgs e)
         {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Documents (*.xls)|*.xls";
+            sfd.FileName = "export.xls";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                //ToCsV(dataGridView1, @"c:\export.xls");
+                ToCsV(dataGridView1, sfd.FileName); // Here dataGridview1 is your grid view name 
+            }  
             MessageBox.Show("엑셀파일로 저장완료");
         }
 
@@ -838,7 +873,14 @@ class Analysis_Class
             for (int i = 0; i < str_calc_date.Length; i++)
                 str_calc_date[i] = str_calc_date[i].Trim();
             // tota_calc_date : 총 개발기간을 보여주기 위한 변수
-            total_calc_date = str_calc_date[0] + "일 " + str_calc_date[1];
+            if (int.Parse(str_calc_date[0]) == 1)
+            {
+                total_calc_date = str_calc_date[0] + "day " + str_calc_date[1];
+            }
+            else
+            {
+                total_calc_date = str_calc_date[0] + "days " + str_calc_date[1];
+            }
         }
         else
         {
@@ -883,7 +925,14 @@ class Analysis_Class
             for (int i = 0; i < str_calc_date.Length; i++)
                 str_calc_date[i] = str_calc_date[i].Trim();
             // tota_calc_date : 총 개발기간을 보여주기 위한 변수
-            total_calc_date = str_calc_date[0] + "일 " + str_calc_date[1];
+            if (int.Parse(str_calc_date[0]) == 1)
+            {
+                total_calc_date = str_calc_date[0] + "day " + str_calc_date[1];
+            }
+            else
+            {
+                total_calc_date = str_calc_date[0] + "days " + str_calc_date[1];
+            }
         }
         else
         {
@@ -1029,6 +1078,7 @@ class Analysis_Class
             // 총 코드 수 작성
             // '추가 - 삭제' 하는 것이 올바른 계산 방법인지 생각해 봐야함 
             temp_total_loc = temp_ins_loc - temp_del_loc;
+            temp_total_loc = Math.Abs(temp_total_loc);
             // System.Console.WriteLine(project_name[j] + "의 총 코드작성수" + temp_total_loc);
 
             // Visualization에 보낼 total Arraylist 선택
@@ -1052,6 +1102,7 @@ class Analysis_Class
             tem_per_del = 0;
             temp_del_loc = 0;
         }
+        // Analysis class 단위 테스트
         for (int i = 0; i < total_analysis_data.Count; i++)
             System.Console.WriteLine(total_analysis_data[i]);
         return total_analysis_data;
