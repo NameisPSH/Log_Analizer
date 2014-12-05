@@ -66,9 +66,7 @@ namespace windowsForms_mjs
                 final_data = b.project_analysis(Date_parsing);
 
                 // 분석시작 버튼 누르면 분석에 관한 패널 뜸 
-                tabPage1.Visible = false;
-                tabPage2.Visible = false;
-                tabControl1.Visible = false;
+                groupBox1.Visible = false;
                 panel1.Visible = true;
                 button_bmp_save.Visible = true;
                 button_excel_save.Visible = true;
@@ -190,20 +188,6 @@ namespace windowsForms_mjs
 
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            //팀 수 선택 갯수에 따라 불러오기 셋팅 바꿔주기
-            textBoxT1.Visible = false;
-            textBoxT2.Visible = true;
-            textBoxT3.Visible = true;
-            textBoxT4.Visible = true;
-            textBoxT5.Visible = false;
-            buttonT1.Visible = false;
-            buttonT2.Visible = true;
-            buttonT3.Visible = true;
-            buttonT4.Visible = true;
-            buttonT5.Visible = false;
-        }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
@@ -218,52 +202,6 @@ namespace windowsForms_mjs
         private void textBox1T1_TextChanged(object sender, EventArgs e)
         {
   
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            //팀 수 선택 갯수에 따라 불러오기 셋팅 바꿔주기
-            textBoxT1.Visible = false;
-            textBoxT2.Visible = true;
-            textBoxT3.Visible = false;
-            textBoxT4.Visible = true;
-            textBoxT5.Visible = false;
-            buttonT1.Visible = false;
-            buttonT2.Visible = true;
-            buttonT3.Visible = false;
-            buttonT4.Visible = true;
-            buttonT5.Visible = false;
-            
-        }
-
-        private void radioButtonT4_CheckedChanged(object sender, EventArgs e)
-        {
-            //팀 수 선택 갯수에 따라 불러오기 셋팅 바꿔주기
-            textBoxT1.Visible = true;
-            textBoxT2.Visible = true;
-            textBoxT3.Visible = true;
-            textBoxT4.Visible = true;
-            textBoxT5.Visible = false;
-            buttonT1.Visible = true;
-            buttonT2.Visible = true;
-            buttonT3.Visible = true;
-            buttonT4.Visible = true;
-            buttonT5.Visible = false;
-        }
-
-        private void radioButtonT5_CheckedChanged(object sender, EventArgs e)
-        {
-            //팀 수 선택 갯수에 따라 불러오기 셋팅 바꿔주기
-            textBoxT1.Visible = true;
-            textBoxT2.Visible = true;
-            textBoxT3.Visible = true;
-            textBoxT4.Visible = true;
-            textBoxT5.Visible = true;
-            buttonT1.Visible = true;
-            buttonT2.Visible = true;
-            buttonT3.Visible = true;
-            buttonT4.Visible = true;
-            buttonT5.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -409,77 +347,11 @@ namespace windowsForms_mjs
             }
         }
 
-        private void openFileDialog2_FileOk(object sender, CancelEventArgs e)
-        {
-            OpenFileDialog D2 = openFileDialog2;
-
-            string fullPathName2 = D2.FileName;
-            //string fileName = D2.SafeFileName;
-            //string pathName = fullName.Substring(0, (fullPathName.Length - fileName.Length));
-
-            textBoxT1.Text = fullPathName2; // 전체경로
-        }
-
-        private void textBoxT4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxT5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void openFileDialog3_FileOk(object sender, CancelEventArgs e)
-        {
-            OpenFileDialog D3 = openFileDialog3;
-
-            string fullPathName3 = D3.FileName;
-            //string fileName = dlg.SafeFileName;
-            //string pathName = fullName.Substring(0, (fullPathName.Length - fileName.Length));
-
-            textBoxT2.Text = fullPathName3; // 전체경로
-        }
-
-        private void openFileDialog4_FileOk(object sender, CancelEventArgs e)
-        {
-            OpenFileDialog D4 = openFileDialog4;
-
-            string fullPathName4 = D4.FileName;
-            //string fileName = dlg.SafeFileName;
-            //string pathName = fullName.Substring(0, (fullPathName.Length - fileName.Length));
-
-            textBoxT3.Text = fullPathName4; // 전체경로
-        }
-
-        private void openFileDialog5_FileOk(object sender, CancelEventArgs e)
-        {
-            OpenFileDialog D5 = openFileDialog5;
-
-            string fullPathName5 = D5.FileName;
-            //string fileName5 = dlg.SafeFileName;
-            //string pathName = fullName.Substring(0, (fullPathName.Length - fileName.Length));
-
-            textBoxT4.Text = fullPathName5; // 전체경로
-        }
-
-        private void openFileDialog6_FileOk(object sender, CancelEventArgs e)
-        {
-            OpenFileDialog D6 = openFileDialog6;
-
-            string fullPathName6 = D6.FileName;
-            //string fileName = dlg.SafeFileName;
-            //string pathName = fullName.Substring(0, (fullPathName.Length - fileName.Length));
-
-            textBoxT5.Text = fullPathName6; // 전체경로
-        }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
             // 분석시작 버튼 누르면 분석에 관한 패널 뜸 
-            tabPage1.Visible = false;
-            tabPage2.Visible = false;
-            tabControl1.Visible = false;
+            groupBox1.Visible = false;
             panel1.Visible = true;
             button_bmp_save.Visible = true;
             button_excel_save.Visible = true; 
@@ -525,15 +397,24 @@ namespace windowsForms_mjs
            // parsing_logData = a.commitParsing(logData);
 
 
-
-            form2.chart1.Series.Add("Series1");
-            form2.chart2.Series.Add("Series2");
-            form2.chart3.Series.Add("Series3");
+            //form2.chart1.Series.Add("Series1");
+            //form2.chart2.Series.Add("Series2");
+            //form2.chart3.Series.Add("Series3");
             // charttype 설정 
-            form2.chart1.Series["Series1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-            form2.chart2.Series["Series2"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            form2.chart3.Series["Series3"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            //form2.chart1.Series["Series1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            //form2.chart2.Series["Series2"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            //form2.chart3.Series["Series3"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
+            form2.chart1.Name = "commit";
+            form2.chart2.Name = "LoC";
+            form2.chart3.Name = "sincerity";
+            // 그래프 위에 숫자 보여지기
+            //form2.chart1.Series["Series1"].IsValueShownAsLabel = true;
+            //form2.chart2.Series["Series2"].IsValueShownAsLabel = true;
+            //form2.chart3.Series["Series3"].IsValueShownAsLabel = true;
+            //form2.chart1.ChartAreas[0].AxisX.Interval = 1;
+            //form2.chart1.ChartAreas[0].AxisX.IntervalOffset = 0;  
+  
             for (int i = 0; i < final_data.Count / 10; i++)
             {
                 /*
@@ -565,22 +446,30 @@ namespace windowsForms_mjs
                 //seriesLine.AxisLabel = stringValue[0];
                 //seriesPie.AxisLabel = stringValue[0];
 
+                form2.chart1.Series.Add(stringValue[0].ToString());
+                form2.chart2.Series.Add(stringValue[0].ToString());
+                form2.chart3.Series.Add(stringValue[0].ToString());
+                form2.chart1.Series[stringValue[0].ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                form2.chart2.Series[stringValue[0].ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+                form2.chart3.Series[stringValue[0].ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+
                 // int값으로 바꿔서 그래프 출력
                 // 0 : commit / 1 : Loc / 2 : 성실도
                 if (graph_state == 0)
                 {
-                    form2.chart1.Series["Series1"].Points.AddXY(i,(int.Parse(stringValue[4])));
-                    form2.chart2.Series["Series2"].Points.AddXY(i,(int.Parse(stringValue[4])));
-                    form2.chart3.Series["Series3"].Points.AddXY(i,(int.Parse(stringValue[4])));
+                    form2.chart1.Series[stringValue[0].ToString()].Points.AddXY(i, (int.Parse(stringValue[4])));
+                    form2.chart2.Series[stringValue[0].ToString()].Points.AddXY(i, (int.Parse(stringValue[4])));
+                    form2.chart3.Series[stringValue[0].ToString()].Points.AddXY(i, (int.Parse(stringValue[4])));
+
                     //seriesColumn.Points.Add(int.Parse(stringValue[4]));
                     //seriesLine.Points.Add(int.Parse(stringValue[4]));
                     //seriesPie.Points.Add(int.Parse(stringValue[4]));
                 }
                 else if (graph_state == 1)
                 {
-                    form2.chart1.Series["Series1"].Points.AddXY(i, (int.Parse(stringValue[2])));
-                    form2.chart2.Series["Series2"].Points.AddXY(i, (int.Parse(stringValue[2])));
-                    form2.chart3.Series["Series3"].Points.AddXY(i, (int.Parse(stringValue[2])));
+                    form2.chart1.Series[stringValue[0].ToString()].Points.AddXY(i, (int.Parse(stringValue[2])));
+                    form2.chart2.Series[stringValue[0].ToString()].Points.AddXY(i, (int.Parse(stringValue[2])));
+                    form2.chart3.Series[stringValue[0].ToString()].Points.AddXY(i, (int.Parse(stringValue[2])));
                     //seriesColumn.Points.Add(int.Parse(stringValue[2]));
                     //seriesLine.Points.Add(int.Parse(stringValue[2]));
                     //seriesPie.Points.Add(int.Parse(stringValue[2]));
@@ -588,9 +477,9 @@ namespace windowsForms_mjs
                 }
                 else if (graph_state == 2)
                 {
-                    form2.chart1.Series["Series1"].Points.AddXY(i, (int.Parse(stringValue[3])));
-                    form2.chart2.Series["Series2"].Points.AddXY(i, (int.Parse(stringValue[3])));
-                    form2.chart3.Series["Series3"].Points.AddXY(i, (int.Parse(stringValue[3])));
+                    form2.chart1.Series[stringValue[0].ToString()].Points.AddXY(i, (int.Parse(stringValue[3])));
+                    form2.chart2.Series[stringValue[0].ToString()].Points.AddXY(i, (int.Parse(stringValue[3])));
+                    form2.chart3.Series[stringValue[0].ToString()].Points.AddXY(i, (int.Parse(stringValue[3])));
                     //seriesColumn.Points.Add(int.Parse(stringValue[3]));
                     //seriesLine.Points.Add(int.Parse(stringValue[3]));
                     //seriesPie.Points.Add(int.Parse(stringValue[3]));
@@ -611,9 +500,7 @@ namespace windowsForms_mjs
         private void button_back_Click(object sender, EventArgs e)
         {
             // 다시 처음 화면으로 돌리기 위해
-            tabPage1.Visible = true;
-            tabPage2.Visible = true;
-            tabControl1.Visible = true;
+            groupBox1.Visible = true;
             panel1.Visible = false;
             button_bmp_save.Visible = false;
             button_excel_save.Visible = false;
@@ -677,6 +564,11 @@ namespace windowsForms_mjs
         {
             // 2일 경우 성실도 보여주기 
             graph_state = 2;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
         }

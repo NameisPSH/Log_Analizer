@@ -28,28 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.buttonPerson = new System.Windows.Forms.Button();
             this.textBoxSFile = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.buttonTeam = new System.Windows.Forms.Button();
-            this.buttonT5 = new System.Windows.Forms.Button();
-            this.buttonT4 = new System.Windows.Forms.Button();
-            this.textBoxT5 = new System.Windows.Forms.TextBox();
-            this.textBoxT4 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonT5 = new System.Windows.Forms.RadioButton();
-            this.radioButtonT4 = new System.Windows.Forms.RadioButton();
-            this.radioButtonT3 = new System.Windows.Forms.RadioButton();
-            this.radioButtonT2 = new System.Windows.Forms.RadioButton();
-            this.buttonT3 = new System.Windows.Forms.Button();
-            this.buttonT2 = new System.Windows.Forms.Button();
-            this.buttonT1 = new System.Windows.Forms.Button();
-            this.textBoxT3 = new System.Windows.Forms.TextBox();
-            this.textBoxT2 = new System.Windows.Forms.TextBox();
-            this.textBoxT1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_graph = new System.Windows.Forms.Button();
             this.button_back = new System.Windows.Forms.Button();
@@ -71,42 +52,17 @@
             this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog5 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog6 = new System.Windows.Forms.OpenFileDialog();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(505, 311);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.buttonPerson);
-            this.tabPage1.Controls.Add(this.textBoxSFile);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(497, 285);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "개인별";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // buttonPerson
             // 
-            this.buttonPerson.Location = new System.Drawing.Point(184, 161);
+            this.buttonPerson.Location = new System.Drawing.Point(199, 158);
             this.buttonPerson.Name = "buttonPerson";
             this.buttonPerson.Size = new System.Drawing.Size(127, 39);
             this.buttonPerson.TabIndex = 1;
@@ -116,7 +72,7 @@
             // 
             // textBoxSFile
             // 
-            this.textBoxSFile.Location = new System.Drawing.Point(37, 85);
+            this.textBoxSFile.Location = new System.Drawing.Point(36, 77);
             this.textBoxSFile.Name = "textBoxSFile";
             this.textBoxSFile.Size = new System.Drawing.Size(321, 21);
             this.textBoxSFile.TabIndex = 2;
@@ -124,201 +80,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(364, 80);
+            this.button1.Location = new System.Drawing.Point(377, 73);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 26);
             this.button1.TabIndex = 0;
             this.button1.Text = "불러오기";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.buttonTeam);
-            this.tabPage2.Controls.Add(this.buttonT5);
-            this.tabPage2.Controls.Add(this.buttonT4);
-            this.tabPage2.Controls.Add(this.textBoxT5);
-            this.tabPage2.Controls.Add(this.textBoxT4);
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Controls.Add(this.buttonT3);
-            this.tabPage2.Controls.Add(this.buttonT2);
-            this.tabPage2.Controls.Add(this.buttonT1);
-            this.tabPage2.Controls.Add(this.textBoxT3);
-            this.tabPage2.Controls.Add(this.textBoxT2);
-            this.tabPage2.Controls.Add(this.textBoxT1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(497, 285);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "팀별";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // buttonTeam
-            // 
-            this.buttonTeam.Location = new System.Drawing.Point(184, 225);
-            this.buttonTeam.Name = "buttonTeam";
-            this.buttonTeam.Size = new System.Drawing.Size(130, 38);
-            this.buttonTeam.TabIndex = 13;
-            this.buttonTeam.Text = "분석시작";
-            this.buttonTeam.UseVisualStyleBackColor = true;
-            this.buttonTeam.Click += new System.EventHandler(this.button3_Click_1);
-            // 
-            // buttonT5
-            // 
-            this.buttonT5.Location = new System.Drawing.Point(403, 196);
-            this.buttonT5.Name = "buttonT5";
-            this.buttonT5.Size = new System.Drawing.Size(75, 23);
-            this.buttonT5.TabIndex = 12;
-            this.buttonT5.Text = "불러오기";
-            this.buttonT5.UseVisualStyleBackColor = true;
-            this.buttonT5.Visible = false;
-            this.buttonT5.Click += new System.EventHandler(this.buttonT5_Click);
-            // 
-            // buttonT4
-            // 
-            this.buttonT4.Location = new System.Drawing.Point(403, 167);
-            this.buttonT4.Name = "buttonT4";
-            this.buttonT4.Size = new System.Drawing.Size(75, 23);
-            this.buttonT4.TabIndex = 11;
-            this.buttonT4.Text = "불러오기";
-            this.buttonT4.UseVisualStyleBackColor = true;
-            this.buttonT4.Click += new System.EventHandler(this.buttonT4_Click);
-            // 
-            // textBoxT5
-            // 
-            this.textBoxT5.Location = new System.Drawing.Point(36, 198);
-            this.textBoxT5.Name = "textBoxT5";
-            this.textBoxT5.Size = new System.Drawing.Size(356, 21);
-            this.textBoxT5.TabIndex = 10;
-            this.textBoxT5.Visible = false;
-            this.textBoxT5.TextChanged += new System.EventHandler(this.textBoxT5_TextChanged);
-            // 
-            // textBoxT4
-            // 
-            this.textBoxT4.Location = new System.Drawing.Point(36, 167);
-            this.textBoxT4.Name = "textBoxT4";
-            this.textBoxT4.Size = new System.Drawing.Size(357, 21);
-            this.textBoxT4.TabIndex = 9;
-            this.textBoxT4.TextChanged += new System.EventHandler(this.textBoxT4_TextChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.radioButtonT5);
-            this.groupBox1.Controls.Add(this.radioButtonT4);
-            this.groupBox1.Controls.Add(this.radioButtonT3);
-            this.groupBox1.Controls.Add(this.radioButtonT2);
-            this.groupBox1.Location = new System.Drawing.Point(36, 24);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(442, 46);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "팀 수";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // radioButtonT5
-            // 
-            this.radioButtonT5.AutoSize = true;
-            this.radioButtonT5.Location = new System.Drawing.Point(354, 20);
-            this.radioButtonT5.Name = "radioButtonT5";
-            this.radioButtonT5.Size = new System.Drawing.Size(29, 16);
-            this.radioButtonT5.TabIndex = 3;
-            this.radioButtonT5.Text = "5";
-            this.radioButtonT5.UseVisualStyleBackColor = true;
-            this.radioButtonT5.CheckedChanged += new System.EventHandler(this.radioButtonT5_CheckedChanged);
-            // 
-            // radioButtonT4
-            // 
-            this.radioButtonT4.AutoSize = true;
-            this.radioButtonT4.Location = new System.Drawing.Point(249, 20);
-            this.radioButtonT4.Name = "radioButtonT4";
-            this.radioButtonT4.Size = new System.Drawing.Size(29, 16);
-            this.radioButtonT4.TabIndex = 2;
-            this.radioButtonT4.Text = "4";
-            this.radioButtonT4.UseVisualStyleBackColor = true;
-            this.radioButtonT4.CheckedChanged += new System.EventHandler(this.radioButtonT4_CheckedChanged);
-            // 
-            // radioButtonT3
-            // 
-            this.radioButtonT3.AutoSize = true;
-            this.radioButtonT3.Location = new System.Drawing.Point(148, 18);
-            this.radioButtonT3.Name = "radioButtonT3";
-            this.radioButtonT3.Size = new System.Drawing.Size(29, 16);
-            this.radioButtonT3.TabIndex = 1;
-            this.radioButtonT3.Text = "3";
-            this.radioButtonT3.UseVisualStyleBackColor = true;
-            this.radioButtonT3.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButtonT2
-            // 
-            this.radioButtonT2.AutoSize = true;
-            this.radioButtonT2.Checked = true;
-            this.radioButtonT2.Location = new System.Drawing.Point(37, 18);
-            this.radioButtonT2.Name = "radioButtonT2";
-            this.radioButtonT2.Size = new System.Drawing.Size(29, 16);
-            this.radioButtonT2.TabIndex = 0;
-            this.radioButtonT2.TabStop = true;
-            this.radioButtonT2.Text = "2";
-            this.radioButtonT2.UseVisualStyleBackColor = true;
-            this.radioButtonT2.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // buttonT3
-            // 
-            this.buttonT3.Location = new System.Drawing.Point(403, 142);
-            this.buttonT3.Name = "buttonT3";
-            this.buttonT3.Size = new System.Drawing.Size(78, 19);
-            this.buttonT3.TabIndex = 7;
-            this.buttonT3.Text = "불러오기";
-            this.buttonT3.UseVisualStyleBackColor = true;
-            this.buttonT3.Visible = false;
-            this.buttonT3.Click += new System.EventHandler(this.buttonT3_Click);
-            // 
-            // buttonT2
-            // 
-            this.buttonT2.Location = new System.Drawing.Point(404, 113);
-            this.buttonT2.Name = "buttonT2";
-            this.buttonT2.Size = new System.Drawing.Size(76, 21);
-            this.buttonT2.TabIndex = 6;
-            this.buttonT2.Text = "불러오기";
-            this.buttonT2.UseVisualStyleBackColor = true;
-            this.buttonT2.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // buttonT1
-            // 
-            this.buttonT1.Location = new System.Drawing.Point(404, 85);
-            this.buttonT1.Name = "buttonT1";
-            this.buttonT1.Size = new System.Drawing.Size(77, 20);
-            this.buttonT1.TabIndex = 5;
-            this.buttonT1.Text = "불러오기";
-            this.buttonT1.UseVisualStyleBackColor = true;
-            this.buttonT1.Visible = false;
-            this.buttonT1.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // textBoxT3
-            // 
-            this.textBoxT3.Location = new System.Drawing.Point(36, 140);
-            this.textBoxT3.Name = "textBoxT3";
-            this.textBoxT3.Size = new System.Drawing.Size(357, 21);
-            this.textBoxT3.TabIndex = 4;
-            this.textBoxT3.Visible = false;
-            this.textBoxT3.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            // 
-            // textBoxT2
-            // 
-            this.textBoxT2.Location = new System.Drawing.Point(36, 113);
-            this.textBoxT2.Name = "textBoxT2";
-            this.textBoxT2.Size = new System.Drawing.Size(357, 21);
-            this.textBoxT2.TabIndex = 3;
-            this.textBoxT2.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
-            // textBoxT1
-            // 
-            this.textBoxT1.Location = new System.Drawing.Point(36, 86);
-            this.textBoxT1.Name = "textBoxT1";
-            this.textBoxT1.Size = new System.Drawing.Size(356, 21);
-            this.textBoxT1.TabIndex = 2;
-            this.textBoxT1.Visible = false;
-            this.textBoxT1.TextChanged += new System.EventHandler(this.textBox1T1_TextChanged);
             // 
             // panel1
             // 
@@ -489,61 +257,44 @@
             this.pictureBox1.Size = new System.Drawing.Size(522, 353);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+
+            // groupBox1
             // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog2";
-            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
-            // 
-            // openFileDialog3
-            // 
-            this.openFileDialog3.FileName = "openFileDialog3";
-            this.openFileDialog3.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog3_FileOk);
-            // 
-            // openFileDialog4
-            // 
-            this.openFileDialog4.FileName = "openFileDialog4";
-            this.openFileDialog4.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog4_FileOk);
-            // 
-            // openFileDialog5
-            // 
-            this.openFileDialog5.FileName = "openFileDialog5";
-            this.openFileDialog5.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog5_FileOk);
-            // 
-            // openFileDialog6
-            // 
-            this.openFileDialog6.FileName = "openFileDialog6";
-            this.openFileDialog6.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog6_FileOk);
+            this.groupBox1.Controls.Add(this.textBoxSFile);
+            this.groupBox1.Controls.Add(this.buttonPerson);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Location = new System.Drawing.Point(21, 34);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(493, 261);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Data Analyzer";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 507);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Data Analyzer";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -551,37 +302,18 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TextBox textBoxSFile;
         private System.Windows.Forms.Button buttonPerson;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button buttonT3;
-        private System.Windows.Forms.Button buttonT2;
-        private System.Windows.Forms.Button buttonT1;
-        private System.Windows.Forms.TextBox textBoxT3;
-        private System.Windows.Forms.TextBox textBoxT2;
-        private System.Windows.Forms.TextBox textBoxT1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButtonT5;
-        private System.Windows.Forms.RadioButton radioButtonT4;
-        private System.Windows.Forms.RadioButton radioButtonT3;
-        private System.Windows.Forms.RadioButton radioButtonT2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button buttonT5;
-        private System.Windows.Forms.Button buttonT4;
-        private System.Windows.Forms.TextBox textBoxT5;
-        private System.Windows.Forms.TextBox textBoxT4;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.OpenFileDialog openFileDialog3;
         private System.Windows.Forms.OpenFileDialog openFileDialog4;
         private System.Windows.Forms.OpenFileDialog openFileDialog5;
         private System.Windows.Forms.OpenFileDialog openFileDialog6;
-        private System.Windows.Forms.Button buttonTeam;
         private System.Windows.Forms.Button button_bmp_save;
         private System.Windows.Forms.Button button_excel_save;
         private System.Windows.Forms.Label label4;
@@ -594,6 +326,7 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox groupBox1;
 
 
     }
