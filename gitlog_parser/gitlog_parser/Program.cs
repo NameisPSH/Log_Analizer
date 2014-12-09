@@ -32,6 +32,7 @@ namespace gitlog_parser
             b.project_analysis(Date_parsing);
         }
     }
+
     class Parsing_class
     {
         static int totalCommitValue = 0;
